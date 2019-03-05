@@ -26,6 +26,16 @@ Route::group([
 //    'middleware' => 'admin'
 ], function () {
 
+    //Install CRUD
+    Route::resource('install','InstallController');
+    Route::get('data_install','InstallController@list');
+    Route::post('data_install_column','InstallController@column');
+    Route::get('detailvalue','InstallController@detailvalue');
+
+    //Example CRUD
+    Route::resource('example','example\ExampleController');
+    Route::get('data_example','example\ExampleController@list');
+
     // Dashboard
     //----------------------------------
 

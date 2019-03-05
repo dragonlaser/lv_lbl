@@ -25,6 +25,18 @@
         <script src="{{mix('/assets/admin/js/core/plugins.js')}}"></script>
         <script src="{{asset('/assets/admin/js/demo/skintools.js')}}"></script>
         <script src="{{mix('/assets/admin/js/core/app.js')}}"></script>
+        <script>
+            rurl = "{{asset('')}}";
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var menu = "{{ !empty($menu) ? $menu : '' }}";
+            var database = "{{env('DB_DATABASE')}}";
+            var checked = null;
+        </script>
         @yield('scripts')
     </body>
 </html>
