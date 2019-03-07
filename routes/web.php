@@ -328,6 +328,31 @@ Route::group([
             ]);
         });
     });
+    Route::get('test',function() {
+        dd(1);
+    });
+    Route::group(['prefix' => 'documents'], function() {
+        Route::get('generate_no/{type}', 'DocumentController@generate_no');
+
+        Route::get('/quotation/{id?}', 'DocumentController@quotation');
+        Route::get('/create_quotation', 'DocumentController@create_quotation');
+        Route::post('/create_quotation', 'DocumentController@store_quotation');
+        
+        Route::get('/invoice/{id?}', 'DocumentController@invoice');
+        Route::post('/create_invoice', 'DocumentController@store_invoice');
+        Route::get('/create_invoice/{id?}', 'DocumentController@create_invoice');
+        
+        Route::get('/tax_invoice/{id?}', 'DocumentController@tax_invoice');
+        Route::post('/create_tax_invoice', 'DocumentController@store_tax_invoice');
+        Route::get('/create_tax_invoice/{id?}', 'DocumentController@create_tax_invoice');
+    });
+    Route::group(['prefix' => 'manages'], function() 
+    {
+        Route::get('main', 'ManageController@main');
+        Route::get('detail', 'ManageController@detail');
+        Route::get('laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+        Route::post('laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
+    });
 });
 
 /*
