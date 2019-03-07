@@ -348,7 +348,17 @@ Route::group([
     Route::group(['prefix' => 'manages'], function() 
     {
         Route::get('main', 'ManageController@main');
+        Route::get('main/lists', 'ManageController@main_lists');
+        Route::post('main/store', 'ManageController@main_store');
+        Route::get('main/{id}', 'ManageController@main_show');
+        Route::post('main/{id}', 'ManageController@main_delete');
+
         Route::get('detail', 'ManageController@detail');
+        Route::get('detail/lists', 'ManageController@detail_lists');
+        Route::post('detail/store', 'ManageController@detail_store');
+        Route::get('detail/{id}', 'ManageController@detail_show');
+        Route::post('detail/{id}', 'ManageController@detail_delete');
+
         Route::get('laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
         Route::post('laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
     });

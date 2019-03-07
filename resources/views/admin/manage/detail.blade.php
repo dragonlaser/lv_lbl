@@ -1,46 +1,98 @@
 {{-- @extends('admin.layouts.layout-basic') --}} @extends('admin.layouts.layout-horizontal') @section('scripts')
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<script src="{{asset('assets/admin/js/example.js')}}"></script>
+<!-- <script src="{{asset('assets/admin/js/example.js')}}"></script> -->
 <script src="{{asset('assets/admin/js/settings/valudation_th.js')}}"></script>
-<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>
-    var editor_config = {
-        path_absolute: rurl+"admin/manages/",
-        selector: "textarea.my-editor",
-        plugins: [
-            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-            "searchreplace wordcount visualblocks visualchars code fullscreen",
-            "insertdatetime media nonbreaking save table contextmenu directionality",
-            "emoticons template paste textcolor colorpicker textpattern"
-        ],
-        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-        relative_urls: false,
-        file_browser_callback: function (field_name, url, type, win) {
-            var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName(
-                'body')[0].clientWidth;
-            var y = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName(
-                'body')[0].clientHeight;
-
-            var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
-            console.log(cmsURL);
-            if (type == 'image') {
-                cmsURL = cmsURL + "&type=Images";
-            } else {
-                cmsURL = cmsURL + "&type=Files";
+    $('.save').click(function(e) {
+        e.preventDefault();
+        console.log($('#FormAdd').serialize());
+        $.ajax({
+            url: rurl+'/admin/manages/detail/store',
+            method: 'POST',
+            data: $('#FormAdd').serialize(),
+            success: function() {
+                $("#example").DataTable().ajax.reload(null, false);
+                toastr['success']('Example Deleted', 'Success')
+                $('.modal').modal('hide');
+                $('input, select, textarea').val('');
+                $('#menu_id').val('');
+                $('#menu_id').select2();
+            },
+            error: function() {
+                toastr['error']('There was an error', 'Error')
             }
+        });
+    });
+    $('body').on('click', '.btn-delete', function() {
+        var id = $(this).data('id');
+        $.ajax({
+            method:'POST',
+            url: rurl+'/admin/manages/detail/'+id,
+            success: function (data) {
+            toastr['success']('Example Deleted', 'Success')
+            $("#example").DataTable().ajax.reload(null, false);
+            },
+            error: function (data) {
+            toastr['error']('There was an error', data)
+            }
+        });
+    });
+      var table = $('#example').DataTable({
+        "responsive": true,
+        "serverSide": true,
+        "processing": true,
+        "ajax": rurl + '/admin/manages/detail/lists',
+        "columns": [{
+            "data": 'DT_RowIndex',
+            "name": 'DT_RowIndex',
+            orderable: false,
+            searchable: false,
+            className:"text-center"
+          },
 
-            tinyMCE.activeEditor.windowManager.open({
-                file: cmsURL,
-                title: 'Filemanager',
-                width: x * 0.8,
-                height: y * 0.8,
-                resizable: "yes",
-                close_previous: "no"
-            });
-        }
-    };
-
-    tinymce.init(editor_config);
+          {
+            "data": "title",
+            "name": "title"
+          },
+          {
+            "data": "m_title",
+            "name": "front_menus.title"
+          },
+          {
+            "data": "detail",
+            "name": "detail"
+          },
+          {
+            "data": "photo",
+            "name": "photo"
+          },
+          {
+            "data": "action",
+            orderable: false,
+            searchable: false,
+            className: 'text-center'
+          }
+        ],
+      });
+      $('body').on('click', '.btn-edit', function(){
+          var id = $(this).data('id')
+          $('#id').val(id);
+          $.ajax({
+            type: 'get',
+            url: rurl+'/admin/manages/detail/'+id,
+            dataType: "json",
+            success: function (data) {
+                $('#title').val(data.title);
+                $('#menu_id').val(data.menu_id);
+                $('#menu_id').select2();
+                $('#detail').val(data.detail);
+                $('.modal').modal('show');
+            },
+            error: function (data) {
+                toastr['error']('There was an error', data)
+            }
+          });
+        });
 </script>
 @stop @section('content')
 
@@ -53,8 +105,9 @@
             <li class="breadcrumb-item active">{{ isset($menu) ? $menu : '' }}</li>
         </ol>
         <div class="page-actions">
-            <button type="button" class="btn btn-theme btn-add" data-toggle="modal" data-target="#exampleModal">+ {{ isset($menu) ?
-                    $menu : '' }}</button>
+            <button type="button" class="btn btn-theme btn-add" data-toggle="modal" data-target="#exampleModal">+ {{
+                isset($menu) ?
+                $menu : '' }}</button>
         </div>
     </div>
     <div class="row">
@@ -64,15 +117,15 @@
                     <h6>{{ isset($menu) ? $menu : '' }}</h6>
                 </div>
                 <div class="card-body">
-                    <table id="example" class="table table-sm table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="example" class="table table-sm table-hover table-striped table-bordered" cellspacing="0"
+                        width="100%">
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>field_1</th>
-                                <th>field_2</th>
-                                <th>field_3</th>
-                                <th>field_4</th>
-                                <th>field_5</th>
+                                <th>title</th>
+                                <th>menu</th>
+                                <th>detail</th>
+                                <th>photo</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -81,52 +134,48 @@
             </div>
         </div>
     </div>
+</div>
 
-    <form class="validateForm">
 
-        <!-- Simple Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">{{ isset($menu) ? $menu : '' }}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+<!-- Simple Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <form id="FormAdd">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ isset($menu) ? $menu : '' }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input class="form-control" type="hidden" name="id" id="id">
+                    <div class="form-group">
+                        <label for="menu_id">Menu</label>
+                        <select name="menu_id" id="menu_id" class="form-control ls-select2">
+                            <option value="">choose menu</option>
+                            @foreach($main as $v)
+                            <option value="{{$v->id}}">{{$v->title}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="modal-body">
-                        <input class="form-control" type="hidden" name="id">
-                        <div class="form-group">
-                            <label for="type"></label>
-                            <select name="type" id="type" class="form-control">
-                                <option value="1">type1</option>
-                                <option value="2">type2</option>
-                                <option value="3">type3</option>
-                                <option value="4">type4</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input class="form-control" type="text" name="titel" id="titel">
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea name="description" id="description" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea name="content" class="form-control my-editor">123</textarea>
-                        </div>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input class="form-control" type="text" name="title" id="title">
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                    <div class="form-group">
+                        <label for="detail">Detail</label>
+                        <textarea name="detail" id="detail" class="form-control"></textarea>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary save">Save</button>
+                </div>
             </div>
-        </div>
-
-    </form>
+        </form>
+    </div>
 </div>
+
 
 @stop

@@ -10,6 +10,7 @@ class DocumentController extends Controller
 {
 
     public function create_quotation(Request $request) {
+        $data['bank'] = \Laraspace\Models\Bank::get();
         $data['segment'] = $request->segment(3);
         $data['customer'] = \Laraspace\Models\CustomerCompany::get();
         return view('admin/documents.create_quotation', $data);
