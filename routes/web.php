@@ -31,6 +31,7 @@ Route::group([
     Route::get('data_install','InstallController@list');
     Route::post('data_install_column','InstallController@column');
     Route::get('detailvalue','InstallController@detailvalue');
+    Route::post('createmvc','InstallController@createmvc');
 
     //Example CRUD
     Route::resource('example','example\ExampleController');

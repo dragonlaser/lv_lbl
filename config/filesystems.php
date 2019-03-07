@@ -48,11 +48,19 @@ return [
             'root' => storage_path('app'),
         ],
 
-        'public' => [
+        'install' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
+            'root' => storage_path('install'),
+        ],
+
+        'app' => [
+            'driver' => 'local',
+            'root' => app_path(''),
+        ],
+
+        'js' => [
+            'driver' => 'local',
+            'root' => public_path('assets/admin/js/admin'),
         ],
 
         's3' => [

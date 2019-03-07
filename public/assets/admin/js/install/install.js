@@ -34,6 +34,7 @@ var Example = (function () {
 
         function getcolumns(tablename){
             $("#tablename").html(tablename)
+            $("[name='table']").val(tablename)
             $(".column").removeClass('d-none')
             $('#column').DataTable().clear().destroy();
             $('#column').DataTable({
@@ -137,7 +138,7 @@ var Example = (function () {
                     url: rurl + 'admin/detailvalue',
                     dataType: "json",
                     success: function (response) {
-                        var str = "<select class='source' name=\""+$name+"['source']\" >";
+                        var str = "<select class='source' name=\""+$name+"[source]\" >";
                             str += '<option value="">== select table ==</option>'
                         $.each(response, function (key, value) { 
                             str += "<option value="+value[('Tables_in_' + database)]+">"+(key+1)+"."+value[('Tables_in_' + database)]+"</option>"
@@ -163,13 +164,13 @@ var Example = (function () {
                 data: {table:$(this).val()},
                 dataType: "json",
                 success: function (response) {
-                    var str = "<select name=\""+$name+"['name']\" >"
+                    var str = "<select name=\""+$name+"[name]\" >"
                         str += '<option value="">== select value ==</option>'
                     $.each(response, function (key, value) { 
                         str += "<option value="+value.Field+">"+value.Field+"</option>"
                     });
                     str += "</select>"
-                    str += "<select name=\""+$name+"['id']\" >"
+                    str += "<select name=\""+$name+"[id]\" >"
                     str += "<option value=''>== select name ==</option>"
                     $.each(response, function (key, value) { 
                         str += "<option value="+value.Field+">"+value.Field+"</option>"
@@ -190,7 +191,7 @@ var Example = (function () {
             // console.log( form.serialize() );
             $.ajax({
                 type: "POST",
-                url: rurl + 'admin/install',
+                url: rurl + 'admin/createmvc',
                 data: form.serialize(),
                 dataType: "json",
                 success: function (response) {

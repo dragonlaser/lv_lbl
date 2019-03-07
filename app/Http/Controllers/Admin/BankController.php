@@ -1,12 +1,16 @@
 <?php
 
-namespace Laraspace\Http\Controllers\example;
+namespace Laraspace\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Laraspace\Http\Controllers\Controller;
-use \Laraspace\Models\Example;
 
-class ExampleController extends Controller
+use Laraspace\Models\Bank;
+use Laraspace\Models\Employee;
+
+
+
+class BankController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +19,14 @@ class ExampleController extends Controller
      */
     public function index()
     {
-        $data['users'] = \Laraspace\User::get();
-        $data['menu'] = 'Example';
-        return view('example.index')->with($data);
+		$data['employee'] = Employee::get();
+
+        $data['menu'] = 'Bank';
+        return view('admin.lbl.bank')->with($data);
     }
 
     public function list(){
-        $model = Example::query();
+        $model = Bank::query();
         return  \DataTables::eloquent($model)
                 ->addColumn('action',function($rec){
                     $str = '
@@ -60,7 +65,7 @@ class ExampleController extends Controller
         if(!empty($request->id)){
             $this->update($request,$request->id);
         }else{
-            Example::insert($request->all());
+            Bank::insert($request->all());
         }
     }
 
@@ -73,7 +78,7 @@ class ExampleController extends Controller
     public function show($id)
     {
         if(!empty($id)){
-            return Example::find($id);
+            return Bank::find($id);
         }else{
             return false;
         }
@@ -100,7 +105,7 @@ class ExampleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Example::where('id',$id)->update($request->all());
+        Bank::where('id',$id)->update($request->all());
     }
 
     /**
@@ -111,7 +116,7 @@ class ExampleController extends Controller
      */
     public function destroy($id)
     {
-        $example = Example::findOrFail($id);
+        $example = Bank::findOrFail($id);
         if($example->delete()){
             return $result['status'] = "success";
         }else{
