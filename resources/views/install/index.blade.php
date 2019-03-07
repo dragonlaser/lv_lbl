@@ -31,6 +31,7 @@
         <div class="column card d-none">
             <div class="card-header">
                 <h6 id="tablename"></h6>
+                <input type="hidden" name="table">
             </div>
             <div class="card-body">
                 <div class="dataTables_wrapper container-fluid dt-bootstrap4">
