@@ -40,7 +40,6 @@
         var checked = null;
     </script>
     <script>
-        var rurl = "{{url('')}}";
         $('.add-row').click(function () {
             var clone = $('body').find('tbody tr:last').clone();
             var index = parseInt(clone[0].id.match(/\d+/)[0]) + 1;

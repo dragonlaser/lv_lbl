@@ -3,7 +3,7 @@ namespace Laraspace\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bank extends Model
+class Examples extends Model
 {
-    protected $table = 'bank';
+    protected $table = 'examples';
 }
