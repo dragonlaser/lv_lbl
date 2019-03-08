@@ -360,6 +360,12 @@ Route::group([
         Route::get('detail/{id}', 'ManageController@detail_show');
         Route::post('detail/{id}', 'ManageController@detail_delete');
 
+        Route::get('contact-us', 'ManageController@contact_us');
+        Route::get('contact-us/lists', 'ManageController@contact_us_lists');
+        Route::post('contact-us/store', 'ManageController@contact_us_store');
+        Route::get('contact-us/{id}', 'ManageController@contact_us_show');
+        Route::post('contact-us/{id}', 'ManageController@contact_us_delete');
+
         Route::get('laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
         Route::post('laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
     });

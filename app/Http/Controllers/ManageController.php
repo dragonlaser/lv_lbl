@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class ManageController extends Controller
 {
+    public function contact_us()
+    {
+        $data['menu'] = 'Contact us';
+        return view('admin.manage.contact_us')->with($data);
+    }
     public function main()
     {
         $data['users'] = \Laraspace\User::get();
@@ -31,6 +36,23 @@ class ManageController extends Controller
             \Laraspace\Models\FrontMenu::where('id', $request->id)->update($insert);
         }
     }
+    public function contact_us_store(Request $request)
+    {
+        $insert = $request->all();
+        $insert['created_at'] = date('Y-m-d H:i:s');
+        $insert['ip'] = $request->ip();
+        unset($insert['id']);
+        if($request->id == null) {
+            \Laraspace\Models\FrontContact::insert($insert);
+        } else {
+            $insert['updated_at'] = date('Y-m-d H:i:s');
+            \Laraspace\Models\FrontContact::where('id', $request->id)->update($insert);
+        }
+    }
+    public function contact_us_show($id)
+    {
+        return json_encode(\Laraspace\Models\FrontContact::find($id));
+    }
     public function main_show($id)
     {
         return json_encode(\Laraspace\Models\FrontMenu::find($id));
@@ -38,6 +60,28 @@ class ManageController extends Controller
     public function main_delete($id)
     {
         \Laraspace\Models\FrontMenu::where('id', $id)->delete();
+    }
+    public function contact_us_delete($id)
+    {
+        \Laraspace\Models\FrontContact::where('id', $id)->delete();
+    }
+    public function contact_us_lists(){
+        $model = \Laraspace\Models\FrontContact::select();
+        return  \DataTables::eloquent($model)
+        ->addColumn('action',function($rec){
+            $str = '
+            <button class="btn btn-icon btn-outline-default btn-edit" data-id="'.$rec->id.'">
+                <i class="icon-fa icon-fa-edit"></i>
+            </button>
+            <button class="btn btn-icon btn-outline-default btn-delete" data-confirmation="notie" data-id="'.$rec->id.'">
+                <i class="icon-fa icon-fa-trash"></i>
+            </button>
+            ';
+            return $str;
+        })
+        ->addIndexColumn()
+        ->rawColumns(['action'])
+        ->toJson();
     }
     public function main_lists(){
         $model = \Laraspace\Models\FrontMenu::select();
