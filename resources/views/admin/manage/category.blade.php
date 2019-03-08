@@ -7,7 +7,7 @@
         e.preventDefault();
         console.log($('#FormAdd').serialize());
         $.ajax({
-            url: rurl+'/admin/manages/detail/store',
+            url: rurl+'/admin/manages/category/store',
             method: 'POST',
             data: $('#FormAdd').serialize(),
             success: function() {
@@ -15,8 +15,6 @@
                 toastr['success']('Example Deleted', 'Success')
                 $('.modal').modal('hide');
                 $('input, select, textarea').val('');
-                $('#menu_id').val('');
-                $('#menu_id').select2();
             },
             error: function() {
                 toastr['error']('There was an error', 'Error')
@@ -27,7 +25,7 @@
         var id = $(this).data('id');
         $.ajax({
             method:'POST',
-            url: rurl+'/admin/manages/detail/'+id,
+            url: rurl+'/admin/manages/category/'+id,
             success: function (data) {
             toastr['success']('Example Deleted', 'Success')
             $("#example").DataTable().ajax.reload(null, false);
@@ -41,7 +39,7 @@
         "responsive": true,
         "serverSide": true,
         "processing": true,
-        "ajax": rurl + '/admin/manages/detail/lists',
+        "ajax": rurl + '/admin/manages/category/lists',
         "columns": [{
             "data": 'DT_RowIndex',
             "name": 'DT_RowIndex',
@@ -51,20 +49,8 @@
           },
 
           {
-            "data": "title",
-            "name": "title"
-          },
-          {
-            "data": "m_title",
-            "name": "front_menus.title"
-          },
-          {
-            "data": "detail",
-            "name": "detail"
-          },
-          {
-            "data": "photo",
-            "name": "photo"
+            "data": "name",
+            "name": "name"
           },
           {
             "data": "action",
@@ -79,13 +65,10 @@
           $('#id').val(id);
           $.ajax({
             type: 'get',
-            url: rurl+'/admin/manages/detail/'+id,
+            url: rurl+'/admin/manages/category/'+id,
             dataType: "json",
             success: function (data) {
-                $('#title').val(data.title);
-                $('#menu_id').val(data.menu_id);
-                $('#menu_id').select2();
-                $('#detail').val(data.detail);
+                $('#title').val(data.title);                
                 $('.modal').modal('show');
             },
             error: function (data) {
@@ -122,10 +105,7 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>title</th>
-                                <th>menu</th>
-                                <th>detail</th>
-                                <th>photo</th>
+                                <th>name</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -151,21 +131,8 @@
                 <div class="modal-body">
                     <input class="form-control" type="hidden" name="id" id="id">
                     <div class="form-group">
-                        <label for="menu_id">Menu</label>
-                        <select name="menu_id" id="menu_id" class="form-control ls-select2" style="width: 100%;">
-                            <option value="">choose menu</option>
-                            @foreach($main as $v)
-                            <option value="{{$v->id}}">{{$v->title}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input class="form-control" type="text" name="title" id="title">
-                    </div>
-                    <div class="form-group">
-                        <label for="detail">Detail</label>
-                        <textarea name="detail" id="detail" class="form-control"></textarea>
+                        <label for="name">Name</label>
+                        <input class="form-control" type="text" name="name" id="name">
                     </div>
                 </div>
                 <div class="modal-footer">

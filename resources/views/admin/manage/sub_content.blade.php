@@ -7,7 +7,7 @@
         e.preventDefault();
         console.log($('#FormAdd').serialize());
         $.ajax({
-            url: rurl+'/admin/manages/detail/store',
+            url: rurl+'/admin/manages/sub-content/store',
             method: 'POST',
             data: $('#FormAdd').serialize(),
             success: function() {
@@ -15,8 +15,6 @@
                 toastr['success']('Example Deleted', 'Success')
                 $('.modal').modal('hide');
                 $('input, select, textarea').val('');
-                $('#menu_id').val('');
-                $('#menu_id').select2();
             },
             error: function() {
                 toastr['error']('There was an error', 'Error')
@@ -27,13 +25,13 @@
         var id = $(this).data('id');
         $.ajax({
             method:'POST',
-            url: rurl+'/admin/manages/detail/'+id,
+            url: rurl+'/admin/manages/sub-content/'+id,
             success: function (data) {
             toastr['success']('Example Deleted', 'Success')
             $("#example").DataTable().ajax.reload(null, false);
             },
             error: function (data) {
-            toastr['error']('There was an error', data)
+            toastr['error']('There was an error', data);
             }
         });
     });
@@ -41,7 +39,7 @@
         "responsive": true,
         "serverSide": true,
         "processing": true,
-        "ajax": rurl + '/admin/manages/detail/lists',
+        "ajax": rurl + '/admin/manages/sub-content/lists',
         "columns": [{
             "data": 'DT_RowIndex',
             "name": 'DT_RowIndex',
@@ -55,16 +53,12 @@
             "name": "title"
           },
           {
-            "data": "m_title",
-            "name": "front_menus.title"
+            "data": "main",
+            "name": "front_contents.title"
           },
           {
             "data": "detail",
             "name": "detail"
-          },
-          {
-            "data": "photo",
-            "name": "photo"
           },
           {
             "data": "action",
@@ -79,13 +73,12 @@
           $('#id').val(id);
           $.ajax({
             type: 'get',
-            url: rurl+'/admin/manages/detail/'+id,
+            url: rurl+'/admin/manages/sub-content/'+id,
             dataType: "json",
             success: function (data) {
-                $('#title').val(data.title);
-                $('#menu_id').val(data.menu_id);
-                $('#menu_id').select2();
+                $('#title').val(data.title);                
                 $('#detail').val(data.detail);
+                $('#content_id').val(data.content_id);
                 $('.modal').modal('show');
             },
             error: function (data) {
@@ -123,9 +116,8 @@
                             <tr>
                                 <th></th>
                                 <th>title</th>
-                                <th>menu</th>
+                                <th>content</th>
                                 <th>detail</th>
-                                <th>photo</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -151,10 +143,10 @@
                 <div class="modal-body">
                     <input class="form-control" type="hidden" name="id" id="id">
                     <div class="form-group">
-                        <label for="menu_id">Menu</label>
-                        <select name="menu_id" id="menu_id" class="form-control ls-select2" style="width: 100%;">
-                            <option value="">choose menu</option>
-                            @foreach($main as $v)
+                        <label for="content_id">content</label>
+                        <select name="content_id" class="form-control ls-select2" id="content_id" style="width: 100%;">
+                            <option value="">Choose content</option>
+                            @foreach($contents as $k => $v)
                             <option value="{{$v->id}}">{{$v->title}}</option>
                             @endforeach
                         </select>

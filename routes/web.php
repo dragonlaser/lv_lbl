@@ -348,23 +348,36 @@ Route::group([
     });
     Route::group(['prefix' => 'manages'], function() 
     {
+        # Menu
         Route::get('main', 'ManageController@main');
         Route::get('main/lists', 'ManageController@main_lists');
         Route::post('main/store', 'ManageController@main_store');
         Route::get('main/{id}', 'ManageController@main_show');
         Route::post('main/{id}', 'ManageController@main_delete');
-
+        # Sub menu
         Route::get('detail', 'ManageController@detail');
         Route::get('detail/lists', 'ManageController@detail_lists');
         Route::post('detail/store', 'ManageController@detail_store');
         Route::get('detail/{id}', 'ManageController@detail_show');
         Route::post('detail/{id}', 'ManageController@detail_delete');
-
+        # Content
+        Route::get('content', 'ManageController@content');
+        Route::get('content/lists', 'ManageController@content_lists');
+        Route::post('content/store', 'ManageController@content_store');
+        Route::get('content/{id}', 'ManageController@content_show');
+        Route::post('content/{id}', 'ManageController@content_delete');
+        # Contact us
         Route::get('contact-us', 'ManageController@contact_us');
         Route::get('contact-us/lists', 'ManageController@contact_us_lists');
         Route::post('contact-us/store', 'ManageController@contact_us_store');
         Route::get('contact-us/{id}', 'ManageController@contact_us_show');
         Route::post('contact-us/{id}', 'ManageController@contact_us_delete');
+        # Category
+        Route::get('category', 'ManageController@category');
+        Route::get('category/lists', 'ManageController@category_lists');
+        Route::post('category/store', 'ManageController@category_store');
+        Route::get('category/{id}', 'ManageController@category_show');
+        Route::post('category/{id}', 'ManageController@category_delete');
 
         Route::get('laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
         Route::post('laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
