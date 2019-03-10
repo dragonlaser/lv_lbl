@@ -16,7 +16,10 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
-Route::get('/menu', 'API/ApiController@get_menu');
+Route::get('/menu', 'API\ApiController@get_menu');
+// Route::get('/menu', function() {
+//     return \Laraspace\Models\FrontMenu::get();
+// });
 
 Route::get('/data_contact','Admin\ContactinformationController@list');
 Route::resource('/contact','Admin\ContactinformationController');

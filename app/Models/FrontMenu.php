@@ -8,6 +8,6 @@ class FrontMenu extends Model
 {
     public function FrontSubMenu()
     {
-        return $this->HasOne('\Laraspace\Models\Menu', 'menu_id', 'id');
+        return $this->HasMany('\Laraspace\Models\FrontSubMenu', 'menu_id', 'id');
     }
 }

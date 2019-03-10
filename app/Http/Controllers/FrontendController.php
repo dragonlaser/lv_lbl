@@ -5,6 +5,6 @@ class FrontendController extends Controller
 {
     public function home()
     {
-        return view('front.index');
+        return view('front.home');
     }
 }

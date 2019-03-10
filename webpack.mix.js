@@ -109,6 +109,7 @@ mix.combine([
 ], 'public/assets/front/js/plugins.js')
 
 .sass('resources/front/sass/front.scss', 'public/assets/front/css/')
+.js('resources/front/js/app.js', 'public/assets/front/js/')
 
 .options({
     processCssUrls: false
