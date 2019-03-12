@@ -239,6 +239,7 @@ class InstallController extends Controller
             //write new model file
             
             $str = '';
+            $editfield = '';
             foreach ($request->all() as $key => $value) {
                 if(!empty($value['use'])){
                     if(!empty($value['use'])){

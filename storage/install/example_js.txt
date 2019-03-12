@@ -121,17 +121,10 @@ var #classname# = (function () {
         })
 
         $(document).on('click', '.btn-add', function(){
-          // $('[name="id"]').remove()
           $('.validateForm').trigger('reset')
           $('.validateForm').addClass('formadd')
           $('.validateForm').removeAttr('data-id')
-            //add value to form #strlower#
-            $('[name="field_1"]').val('f1')
-            $('[name="field_2"]').val('f2')
-            $('[name="field_3"]').val('f3')
-            $('[name="field_4"]').val('f4')
-            $('[name="created_by"]').val(1)
-            $('.ls-select2').select2()
+          $('.ls-select2').select2()
         })
 
         $(document).on('click', '.btn-edit', function(){
@@ -216,5 +209,5 @@ var #classname# = (function () {
   })()
   
   jQuery(document).ready(function () {
-    #strlower#.init()
+    #classname#.init()
   })
