@@ -31,7 +31,9 @@ class InstallController extends Controller
         return      '<div class="form-check">
                         <input type="checkbox" class="form-check-input" name="'.$rec->Field.'[use]">
                         <label class="form-check-label"></label>
-                    </div>';
+                    </div>
+                    <input type="hidden" name="'.$rec->Field.'[field]" value="'.$rec->Field.'">'
+                    ;
         })
         ->addColumn('inputtype',function($rec){
         $str = 
@@ -172,6 +174,7 @@ class InstallController extends Controller
         $result[] = $this->createmodel($request->table);
         $result[] = $this->createcontroller($request);
         $result[] = $this->createjs($request);
+        $result[] = $this->createview($request);
 
         return $result;
     }
@@ -239,6 +242,7 @@ class InstallController extends Controller
             //write new model file
             
             $str = '';
+            $editfield = '';
             foreach ($request->all() as $key => $value) {
                 if(!empty($value['use'])){
                     if(!empty($value['use'])){
@@ -251,6 +255,133 @@ class InstallController extends Controller
         }
 
         return 'js success';
+    }
+
+    public function createview(Request $request){
+        // return $request->all();
+
+        $table = $request->table;
+        $classname = str_replace("_",'',ucfirst($table));
+        $lowerclassname = str_replace("_",'',strtolower($table));
+        if(!file_exists(resource_path("views/admin/js/$lowerclassname.blade.js"))){
+            //read examplemodel file
+            // $content = Storage::disk('install')->get('example_js.txt');
+            // $content = str_replace("#strlower#",$lowerclassname,$content);
+            // $content = str_replace("#classname#",$classname,$content);
+            //write new model file
+            
+            $str = '';
+            $editfield = '';
+            foreach ($request->all() as $key => $value) {
+                if(!empty($value['use'])){
+                    $check = $this->createform(array(
+                        'field' => !empty($value['field']) ? $value['field'] : null
+                        ,'id' => !empty($value['id']) ? $value['id'] : null
+                        ,'name' => !empty($value['name']) ? $value['name'] : null
+                        ,'type' => !empty($value['inputtype']) ? $value['inputtype'] : null
+                        ,'source'=> !empty($value['source']) ? $value['source'] : null
+                    ));
+                }
+            }
+            // $content = str_replace("#showfield#",$str,$content);
+            // Storage::disk('js')->put("$lowerclassname.js",$content);
+        }
+
+        return $check;
+    }
+
+    public function createform($value){
+        
+        $id = $value['id'];
+        $name = $value['name'];
+        $type = $value['type'];
+        $source = $value['source'];
+        $field = $value['field'];
+        // return \DB::table($source)->get();
+
+        switch ($type) {
+            case 'text':
+            return 
+            '<div class="form-group row">
+                <label for="'.$name.'" class="col-sm-2 col-form-label">'.$name.'</label>
+                <div class="col-sm-10">
+                    <input type="'.$type.'" name="'.$name.'" placeholder="'.$name.'" class="form-control">
+                </div>
+            </div>';
+            break;
+
+            case 'email':
+            return
+            '<div class="form-group row">
+                <label for="'.$name.'" class="col-sm-2 col-form-label">'.$name.'</label>
+                <div class="col-sm-10">
+                    <input type="'.$type.'" name="'.$name.'" placeholder="'.$name.'" class="form-control">
+                </div>
+            </div>';
+            break;
+
+            case 'password':
+            return
+            '<div class="form-group row">
+                <label for="'.$name.'" class="col-sm-2 col-form-label">'.$name.'</label>
+                <div class="col-sm-10">
+                    <input type="'.$type.'" name="'.$name.'" placeholder="'.$name.'" class="form-control">
+                </div>
+            </div>';
+            break;
+            
+            case 'textarea':
+            return
+            '<div class="form-group">
+                <label for="'.$name.'">'.$name.'</label>
+                <textarea id="'.$name.'" name="'.$name.'" rows="3" class="form-control"></textarea>
+            </div>';
+            break;
+
+            case 'date':
+            return
+            '<div class="form-group row">
+                <label for="'.$name.'" class="col-sm-2 col-form-label">'.$name.'</label>
+                <div class="col-sm-10">
+                    <input type="'.$type.'" name="'.$name.'" placeholder="'.$name.'" class="form-control">
+                </div>
+            </div>';
+            break;
+
+            case 'dropdown':
+            $str  = '<div class="form-group row">'."\n";
+            $str .= '<label for="'.$name.'" class="col-sm-2 col-form-label">'.$name.'</label>'."\n";
+            $str .= '<select name="'.$field.'" class="ls-select2">'."\n";
+            $str .= '<option value="">== '.$name.' ==</option>'."\n";
+            if(!empty($value['source']) && !empty($value['id']) && !empty($value['name'])){
+                $items = \DB::table($source)->get();
+                foreach ($items as $key => $item) {
+                        $str .= '<option value="'.$item->{$value['id']}.'">== '.$item->{$value['name']}.' ==</option>'."\n"; 
+                }
+            }
+            $str .= '</select>'."\n";
+            $str .= '</div>'."\n";
+            return $str;
+            break;
+
+            case 'checkbox':
+            $str = '';
+            if(!empty($value['source']) && !empty($value['id']) && !empty($value['name'])){
+                $items = \DB::table($source)->get();
+                foreach ($items as $key => $item) {
+                        $str .= '<div class="custom-control custom-checkbox mb-3">'."\n";
+                        $str .=     '<input type="checkbox" value="'.$item->{$value['id']}.'" name="'.$field.'[]" class="custom-control-input">'."\n";
+                        $str .=     '<label for="'.$name.'" class="custom-control-label">'.$name.'</label>'."\n";
+                        $str .= '</div>';
+                }
+            }
+            return $str;
+            break;
+
+            case 'radio':
+            # code...
+            break;
+        }
     }
 
 }

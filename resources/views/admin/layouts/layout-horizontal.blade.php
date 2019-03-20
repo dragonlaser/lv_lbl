@@ -44,6 +44,10 @@
             var clone = $('body').find('tbody tr:last').clone();
             var index = parseInt(clone[0].id.match(/\d+/)[0]) + 1;
             clone.prop('id', 'row-' + index);
+            clone.find('.invoice_no').prop({
+                'name': 'item[' + index + '][invoice_no]',
+                'value': ''
+            });
             clone.find('.item').prop({
                 'name': 'item[' + index + '][item]',
                 'value': ''
@@ -76,15 +80,16 @@
 
         function sum() {
             var sub_total = 0;
+            var tax = $('#tax').is(':checked')? 7 : 0;
             $.each($('body').find('tbody tr'), function (k, v) {
                 var quantity = $(v).find('.quantity').val() || 0;
                 var unit_cost = $(v).find('.unit_cost').val() || 0;
                 sub_total += quantity * unit_cost;
             });
             $('.sub_total').val(sub_total).next().text(numberWithCommas(sub_total.toFixed(2)));
-            $('.vat').val(sub_total * 7 / 100).next().text(numberWithCommas((sub_total * 7 / 100).toFixed(2)));
-            $('.grand_total').val(sub_total + (sub_total * 7 / 100)).next().text(numberWithCommas(((sub_total + (
-                sub_total * 7 / 100)).toFixed(2))));
+            $('.vat').val(sub_total * tax / 100).next().text(numberWithCommas((sub_total * tax / 100).toFixed(2)));
+            $('.grand_total').val(sub_total + (sub_total * tax / 100)).next().text(numberWithCommas(((sub_total + (
+                sub_total * tax / 100)).toFixed(2))));
         }
 
         function numberWithCommas(number) {
@@ -120,6 +125,9 @@
             if ($(this).closest('tbody').find('tr').length > 1) {
                 $(this).closest('tr').remove();
             }
+            sum();
+        });
+        $('#tax').change(function() {
             sum();
         });
         @if(isset($segment))

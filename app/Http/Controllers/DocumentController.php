@@ -13,6 +13,7 @@ class DocumentController extends Controller
         $data['bank'] = \Laraspace\Models\Bank::get();
         $data['segment'] = $request->segment(3);
         $data['customer'] = \Laraspace\Models\CustomerCompany::get();
+        $data['bank'] = \Laraspace\Models\Bank::get();
         return view('admin/documents.create_quotation', $data);
     }
     public function create_invoice(Request $request, $id = null) {
@@ -86,25 +87,36 @@ class DocumentController extends Controller
     }
     public function generate_no($type) {
         $result = \Laraspace\Models\Invoice::where('invoice_type', $type)->orderBy('id', 'desc')->first();
-        $number = 1;
-        if($result) {
+        $number = 0;
+        if($result!=null) {
             preg_match_all('!\d+!', $result->invoice_no, $number);
-            $number++;
+            $number = $number[0][0];
         }
-        return json_encode($number);
+        return json_encode(++$number);
     }
 
     public function store_quotation(Request $request)
     {
-        dd($request->all());
         $validator = Validator::make($request->all(), [
             
         ]);
         if (!$validator->fails()) {
             \DB::beginTransaction();
             try {
-                $data_insert = $input_all;
-                \Laraspace\Models\Invoice::insert($request->all());
+                $data_insert = $request->all();
+                $data_insert['created_at'] = date('Y-m-d H:i:s');
+                $data_contact = $data_insert['contact'];
+                $data_contact['created_at'] = date('Y-m-d H:i:s');
+                $data_item = $data_insert['item'];
+                unset($data_insert['contact'], $data_insert['item'], $data_insert['_token']);
+                $data_insert['contact_information_id'] = \Laraspace\Models\Contactinformation::insertGetId($data_contact);
+                $data_insert['customer_company_id'] = $data_insert['contact']['customer_company_id'];
+                $invoice_id = \Laraspace\Models\Invoice::insertGetId($data_insert);
+                foreach($data_item as $k => $v) {
+                    $v['invoice_id'] = $invoice_id;
+                    $v['created_at'] = date('Y-m-d H:i:s');
+                    \Laraspace\Models\InvoiceDetail::insert($data_item);
+                }
                 \DB::commit();
                 $return['status'] = 1;
                 $return['content'] = 'Finish';

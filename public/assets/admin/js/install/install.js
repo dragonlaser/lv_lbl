@@ -164,13 +164,13 @@ var Example = (function () {
                 data: {table:$(this).val()},
                 dataType: "json",
                 success: function (response) {
-                    var str = "<select name=\""+$name+"[name]\" >"
+                    var str = "<select name=\""+$name+"[id]\" >"
                         str += '<option value="">== select value ==</option>'
                     $.each(response, function (key, value) { 
                         str += "<option value="+value.Field+">"+value.Field+"</option>"
                     });
                     str += "</select>"
-                    str += "<select name=\""+$name+"[id]\" >"
+                    str += "<select name=\""+$name+"[name]\" >"
                     str += "<option value=''>== select name ==</option>"
                     $.each(response, function (key, value) { 
                         str += "<option value="+value.Field+">"+value.Field+"</option>"

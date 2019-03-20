@@ -1,9 +1,10 @@
 <?php
+
 namespace Laraspace\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bank extends Model
+class InvoiceDetail extends Model
 {
-    protected $table = 'bank';
+    protected $table = 'invoice_detail';
 }

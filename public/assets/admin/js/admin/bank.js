@@ -1,10 +1,10 @@
-var Employee = (function () {
+var Bank = (function () {
     var handleTables = function () {
-      var table = $('#employee').DataTable({
+      var table = $('#bank').DataTable({
         "responsive": true,
         "serverSide": true,
         "processing": true,
-        "ajax": rurl + 'admin/data_employee',
+        "ajax": rurl + 'admin/data_bank',
         "columns": [{
             "data": 'DT_RowIndex',
             "name": 'DT_RowIndex',
@@ -12,6 +12,7 @@ var Employee = (function () {
             searchable: false,
             className:"text-center"
           },
+					{"data":"id","name":"bank.id."},
 
           {
             "data": "action",
@@ -76,7 +77,7 @@ var Employee = (function () {
           btn.prop('disabled', true)
           $.ajax({
             type: "post",
-            url: rurl+'admin/employee',
+            url: rurl+'admin/bank',
             data: $( element ).serialize(),
             dataType: "html",
             success: function () {
@@ -84,7 +85,7 @@ var Employee = (function () {
               $('[data-dismiss="modal"]').trigger('click');
               $('.validateForm').removeClass('formadd')
               $('.validateForm').removeClass('formedit')
-              $("#employee").DataTable().ajax.reload(null, false);
+              $("#bank").DataTable().ajax.reload(null, false);
               toastr['success']('Success','Adding information');
             },
             error: function (data) {
@@ -136,7 +137,7 @@ var Employee = (function () {
           selector.find('[type="submit"]').attr('data-id',id)
           $.ajax({
             type: 'get',
-            url: rurl+'admin/employee/'+id,
+            url: rurl+'admin/bank/'+id,
             dataType: "json",
             success: function (data) {
               Object.entries(data).forEach(entry => {
@@ -181,7 +182,7 @@ var Employee = (function () {
       var token = value.data('token')
 
       $.ajax({
-        url: rurl+'admin/employee/'+id,
+        url: rurl+'admin/bank/'+id,
         type: 'DELETE',
         data: {
           _method: 'delete',
@@ -190,7 +191,7 @@ var Employee = (function () {
         },
         success: function (data) {
           toastr['success']('Data Deleted', 'Success')
-          $("#employee").DataTable().ajax.reload(null, false)
+          $("#bank").DataTable().ajax.reload(null, false)
         },
         error: function (data) {
           toastr['error']('There was an error', data)
@@ -209,5 +210,5 @@ var Employee = (function () {
   })()
   
   jQuery(document).ready(function () {
-    Employee.init()
+    Bank.init()
   })

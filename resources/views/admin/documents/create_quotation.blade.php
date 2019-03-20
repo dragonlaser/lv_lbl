@@ -19,50 +19,100 @@
             </div>
             <div class="card-body">
                 <div class="row">
+                    <div class="col-xl- col-md-3 mb-4">
+                        <button type="button" class="btn btn-theme btn-sm" data-toggle="modal" data-target="#exampleModalLong">
+                            Add Customer
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#exampleModalLong">
+                            Add Bank
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl- col-md-6 mb-4">
+                        <h6>Quotation</h6>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="invoice_no" id="invoice_no" value="">
+                        </div>
+                    </div>
                     <div class="col-xl- col-md-6 mb-4">
                         <h5>
                             Customer
                         </h5>
-                        <select class="form-control ls-select2" name="customer_company_id" id='customer_company_id'>
+                        <select class="form-control ls-select2" name="contact[customer_company_id]" id='customer_company_id'>
                             <option value="">Choose customer</option>
                             @foreach($customer as $k => $v)
                             <option value="{{$v->id}}">{{$v->display_name}}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-xl- col-md-6 mb-4 text-right">
-                        <button type="button" class="btn btn-theme btn-sm" data-toggle="modal" data-target="#exampleModalLong">
-                            Add Customer
-                        </button>
+                    <div class="col-xl- col-md-6 mb-4">
+                        <h5>
+                            Bank
+                        </h5>
+                        <select class="form-control ls-select2" name="bank_id" id='bank_id'>
+                            <option value="">Choose Bank</option>
+                            @foreach($bank as $k => $v)
+                            <option value="{{$v->id}}">{{$v->bank_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="col-xl- col-md-6 mb-4">
-                        <div class="row">
-                            <h6>Date</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="icon-fa icon-fa-calendar"></i>
-                                    </span>
-                                </div>
-                                <input type="date" class="form-control" name="date" value="{{date('d/m/Y')}}">
+                        <h5>
+                            Contact name
+                        </h5>
+                        <input type="text" class="form-control" name="contact[contact_name]" value="" id="contact_name">
+                    </div>
+                    <div class="col-xl- col-md-6 mb-4">
+                        <h5>
+                            Telephone
+                        </h5>
+                        <input type="text" class="form-control" name="contact[telephone]" value="" id="telephone">
+                    </div>
+                    <div class="col-xl- col-md-6 mb-4">
+                        <h5>
+                            Email
+                        </h5>
+                        <input type="email" class="form-control" name="contact[email]" value="" id="email">
+                    </div>
+                    <div class="col-xl- col-md-6 mb-4">
+                        <h5>
+                            Project type
+                        </h5>
+                        <select class="form-control ls-select2" name="contact[project_type]" id='project_type'>
+                            <option value="">Project type</option>
+                            <option value="P">Program</option>
+                            <option value="A">Moblie application</option>
+                            <option value="W">Web application</option>
+                        </select>
+                    </div>
+                    <div class="col-xl- col-md-6 mb-4">
+                        <h5>
+                            Project name
+                        </h5>
+                        <input type="text" class="form-control" name="contact[project_name]" value="" id="project_name">
+                    </div>
+                    <div class="col-xl- col-md-6 mb-4">
+                        <h5>
+                            Source
+                        </h5>
+                        <select class="form-control ls-select2" name="contact[source]" id='source'>
+                            <option value="">Project type</option>
+                            <option value="F">Friend</option>
+                            <option value="G">google</option>
+                            <option value="S">Social</option>
+                            <option value="W">Web</option>
+                        </select>
+                    </div>
+                    <div class="col-xl- col-md-6 mb-4">
+                        <h6>Due Date</h6>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="icon-fa icon-fa-calendar"></i>
+                                </span>
                             </div>
-                        </div>
-                        <div class="row">
-                            <h6>Due Date</h6>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="icon-fa icon-fa-calendar"></i>
-                                    </span>
-                                </div>
-                                <input type="date" class="form-control" name="due_date" value="{{date('d/m/Y')}}">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <h6>Quotation</h6>
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="invoice_no" id="invoice_no" value="">
-                            </div>
+                            <input type="date" class="form-control" name="contact[due_date]" value="{{date('d/m/Y')}}">
                         </div>
                     </div>
                 </div>
@@ -77,7 +127,8 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th style="width: 15%;">Item</th>
+                                <th>index</th>
+                                <th style="width: 10%;">Item</th>
                                 <th style="width: 30%;">Description</th>
                                 <th style="width: 10%;">Quantity</th>
                                 <th style="width: 15%;">Unit Cost</th>
@@ -87,6 +138,7 @@
                         </thead>
                         <tbody>
                             <tr id="row-0">
+                                <td><input type="text" class="form-control invoice_no" name="item[0][invoice_no]" value=""></td>
                                 <td><input type="text" class="form-control item" name="item[0][item]" value=""></td>
                                 <td><input type="text" class="form-control description" name="item[0][detail]" value=""></td>
                                 <td><input type="text" class="form-control quantity" name="item[0][quantity]" value="0"></td>
@@ -106,7 +158,7 @@
                                         readonly><span>0.00</span></th>
                             </tr>
                             <tr>
-                                <th>Tax (7%) :</th>
+                                <th><input type="checkbox" name="tax" id="tax" value="T">Tax (7%) :</th>
                                 <th class="text-right"><input type="hidden" class="vat" name="vat" value="" readonly><span>0.00</span></th>
                             </tr>
                             <tr>
@@ -146,7 +198,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-6 col-md-6 mb-4">
-                               <h6>Trading name</h6>
+                                <h6>Trading name</h6>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="trding_name">
                                 </div>
@@ -160,7 +212,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-6 col-md-6 mb-4">
-                               <h6>Trading name</h6>
+                                <h6>Trading name</h6>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="trding_name">
                                 </div>

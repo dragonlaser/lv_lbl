@@ -74,21 +74,23 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th style="width: 15%;">Item</th>
-                                <th style="width: 40%;">Description</th>
+                                <th>index</th>
+                                <th style="width: 10%;">Item</th>
+                                <th style="width: 30%;">Description</th>
                                 <th style="width: 10%;">Quantity</th>
                                 <th style="width: 15%;">Unit Cost</th>
                                 <th style="width: 20%;">Total Net</th>
+                                <th style="width: 10%;"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr id="row-0">
+                                <td><input type="text" class="form-control invoice_no" name="item[0][invoice_no]" value=""></td>
                                 <td><input type="text" class="form-control item" name="item[0][item]" value=""></td>
-                                <td><input type="text" class="form-control description" name="item[0][description]"
-                                        value=""></td>
+                                <td><input type="text" class="form-control description" name="item[0][detail]" value=""></td>
                                 <td><input type="text" class="form-control quantity" name="item[0][quantity]" value="0"></td>
                                 <td><input type="text" class="form-control unit_cost" name="item[0][unit_cost]" value="0"></td>
-                                <td class="text-right"><input type="hidden" class="form-control total_net" name="item[0][total_net]"
+                                <td class="text-right"><input type="hidden" class="form-control total_net" name="item[0][price]"
                                         value="0" readonly><span>0.00</span>
                                 </td>
                                 <td><button class="btn btn-sm btn-danger remove-item">remove</button></td>
@@ -103,7 +105,7 @@
                                         readonly><span>0.00</span></th>
                             </tr>
                             <tr>
-                                <th>Tax (7%) :</th>
+                                <th><input type="checkbox" name="tax" id="tax" value="T">Tax (7%) :</th>
                                 <th class="text-right"><input type="hidden" class="vat" name="vat" value="" readonly><span>0.00</span></th>
                             </tr>
                             <tr>

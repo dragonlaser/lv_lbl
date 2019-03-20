@@ -378,6 +378,12 @@ Route::group([
         Route::post('category/store', 'ManageController@category_store');
         Route::get('category/{id}', 'ManageController@category_show');
         Route::post('category/{id}', 'ManageController@category_delete');
+        # Customer
+        Route::get('customer', 'ManageController@customer');
+        Route::get('customer/lists', 'ManageController@customer_lists');
+        Route::post('customer/store', 'ManageController@customer_store');
+        Route::get('customer/{id}', 'ManageController@customer_show');
+        Route::post('customer/{id}', 'ManageController@customer_delete');
 
         Route::get('laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
         Route::post('laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');

@@ -41,6 +41,12 @@ class ManageController extends Controller
         $data['menu'] = 'category';
         return view('admin.manage.category')->with($data);
     }
+    public function customer()
+    {
+        $data['users'] = \Laraspace\User::get();
+        $data['menu'] = 'customer';
+        return view('admin.manage.customer')->with($data);
+    }
 
     /*
      * store & update
@@ -106,6 +112,18 @@ class ManageController extends Controller
             \Laraspace\Models\FrontCategory::where('id', $request->id)->update($insert);
         }
     }
+    public function customer_store(Request $request)
+    {
+        $insert = $request->all();
+        $insert['created_at'] = date('Y-m-d H:i:s');
+        unset($insert['id']);
+        if($request->id == null) {
+            \Laraspace\Models\CustomerCompany::insert($insert);
+        } else {
+            $insert['updated_at'] = date('Y-m-d H:i:s');
+            \Laraspace\Models\CustomerCompany::where('id', $request->id)->update($insert);
+        }
+    }
 
     /*
      * show
@@ -131,6 +149,10 @@ class ManageController extends Controller
     {
         return json_encode(\Laraspace\Models\FrontCategory::find($id));
     }
+    public function customer_show($id)
+    {
+        return json_encode(\Laraspace\Models\CustomerCompany::find($id));
+    }
 
     /*
      * delete
@@ -155,6 +177,10 @@ class ManageController extends Controller
     public function category_delete($id)
     {
         \Laraspace\Models\FrontCategory::where('id', $id)->delete();
+    }
+    public function Customer_delete($id)
+    {
+        \Laraspace\Models\CustomerCompany::where('id', $id)->delete();
     }
     
     /*
@@ -235,6 +261,24 @@ class ManageController extends Controller
     }
     public function category_lists(){
         $model = \Laraspace\Models\FrontCategory::select();
+        return  \DataTables::eloquent($model)
+        ->addColumn('action',function($rec){
+            $str = '
+            <button class="btn btn-icon btn-outline-default btn-edit" data-id="'.$rec->id.'">
+                <i class="icon-fa icon-fa-edit"></i>
+            </button>
+            <button class="btn btn-icon btn-outline-default btn-delete" data-confirmation="notie" data-id="'.$rec->id.'">
+                <i class="icon-fa icon-fa-trash"></i>
+            </button>
+            ';
+            return $str;
+        })
+        ->addIndexColumn()
+        ->rawColumns(['action'])
+        ->toJson();
+    }
+    public function customer_lists(){
+        $model = \Laraspace\Models\CustomerCompany::select();
         return  \DataTables::eloquent($model)
         ->addColumn('action',function($rec){
             $str = '
