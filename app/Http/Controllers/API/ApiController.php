@@ -11,4 +11,8 @@ class ApiController extends Controller
     {
         return \Laraspace\Models\FrontMenu::with('FrontSubMenu')->get();
     }
+    public function get_content($id, Request $request)
+    {
+        return \Laraspace\Models\FrontContent::with('FrontPhotoContent')->find($id);
+    }
 }
