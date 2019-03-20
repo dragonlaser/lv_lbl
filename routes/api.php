@@ -18,6 +18,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 Route::get('/menu', 'API\ApiController@get_menu');
 Route::get('/{id}/content', 'API\ApiController@get_content');
+Route::get('/{id}/category', 'API\ApiController@get_category');
 // Route::get('/menu', function() {
 //     return \Laraspace\Models\FrontMenu::get();
 // });

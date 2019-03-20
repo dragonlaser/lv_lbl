@@ -15,4 +15,8 @@ class ApiController extends Controller
     {
         return \Laraspace\Models\FrontContent::with('FrontPhotoContent')->find($id);
     }
+    public function get_category($id, Request $request)
+    {
+        return \Laraspace\Models\FrontContent::with('FrontPhotoContent')->where('category_id', $id)->get();
+    }
 }
