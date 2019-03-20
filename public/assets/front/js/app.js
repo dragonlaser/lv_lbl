@@ -2349,6 +2349,8 @@ module.exports = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_owl_carousel__ = __webpack_require__("./node_modules/vue-owl-carousel/dist/vue-owl-carousel.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_owl_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_owl_carousel__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__("./node_modules/axios/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
 //
@@ -2383,29 +2385,28 @@ module.exports = {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    name: 'Weare',
-    components: { carousel: __WEBPACK_IMPORTED_MODULE_0_vue_owl_carousel___default.a }
+		name: 'Weare',
+		components: { carousel: __WEBPACK_IMPORTED_MODULE_0_vue_owl_carousel___default.a },
+		data: function data() {
+				return {
+						Services_title: null,
+						Services_Card: null
+				};
+		},
+		mounted: function mounted() {
+				var _this = this;
+
+				__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('http://localhost:8000/api/menu').then(function (response) {
+						return _this.Services_title = response.data;
+				}), __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('http://localhost:8000/api/menu').then(function (response) {
+						return _this.Services_Card = response.data[0].front_sub_menu;
+				});
+		}
 });
 
 /***/ }),
@@ -3304,43 +3305,23 @@ var render = function() {
           "div",
           { staticClass: "col-md-5" },
           [
-            _c("carousel", { attrs: { autoplay: true, items: 1 } }, [
-              _c("div", { staticClass: "item" }, [
-                _c("div", { staticClass: "owl-portfolio-item" }, [
-                  _c("img", {
-                    staticClass: "img-responsive",
-                    attrs: {
-                      src: __webpack_require__("./resources/front/import/images/demo/portfolio-7.jpg"),
-                      alt: "portfolio"
-                    }
-                  })
+            _c(
+              "carousel",
+              { attrs: { autoplay: true, items: 1 } },
+              _vm._l(10, function(i) {
+                return _c("div", { staticClass: "item" }, [
+                  _c("div", { staticClass: "owl-portfolio-item" }, [
+                    _c("img", {
+                      staticClass: "img-responsive",
+                      attrs: {
+                        src: __webpack_require__("./resources/front/import/images/demo/portfolio-7.jpg"),
+                        alt: "portfolio"
+                      }
+                    })
+                  ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "item" }, [
-                _c("div", { staticClass: "owl-portfolio-item" }, [
-                  _c("img", {
-                    staticClass: "img-responsive",
-                    attrs: {
-                      src: __webpack_require__("./resources/front/import/images/demo/portfolio-8.jpg"),
-                      alt: "portfolio"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "item" }, [
-                _c("div", { staticClass: "owl-portfolio-item" }, [
-                  _c("img", {
-                    staticClass: "img-responsive",
-                    attrs: {
-                      src: __webpack_require__("./resources/front/import/images/demo/portfolio-9.jpg"),
-                      alt: "portfolio"
-                    }
-                  })
-                ])
-              ])
-            ])
+              })
+            )
           ],
           1
         )
@@ -18647,20 +18628,6 @@ module.exports = "/images/portfolio-6.jpg?9097b81739e2ab1c56aa40d0f843534e";
 /***/ (function(module, exports) {
 
 module.exports = "/images/portfolio-7.jpg?9097b81739e2ab1c56aa40d0f843534e";
-
-/***/ }),
-
-/***/ "./resources/front/import/images/demo/portfolio-8.jpg":
-/***/ (function(module, exports) {
-
-module.exports = "/images/portfolio-8.jpg?9097b81739e2ab1c56aa40d0f843534e";
-
-/***/ }),
-
-/***/ "./resources/front/import/images/demo/portfolio-9.jpg":
-/***/ (function(module, exports) {
-
-module.exports = "/images/portfolio-9.jpg?9097b81739e2ab1c56aa40d0f843534e";
 
 /***/ }),
 

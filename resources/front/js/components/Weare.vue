@@ -20,28 +20,11 @@
 				<div class="col-md-5">
 					<carousel :autoplay="true" :items=1 >
 
-						<div class="item">
+						<div class="item" v-for="i in 10">
 							<div class="owl-portfolio-item"><img src="../../import/images/demo/portfolio-7.jpg" class="img-responsive" alt="portfolio"></div>
-						</div>
-						<div class="item">
-							<div class="owl-portfolio-item"><img src="../../import/images/demo/portfolio-8.jpg" class="img-responsive" alt="portfolio"></div>
-						</div>
-						<div class="item">
-							<div class="owl-portfolio-item"><img src="../../import/images/demo/portfolio-9.jpg" class="img-responsive" alt="portfolio"></div>
 						</div>
 
 					</carousel>
-					<!-- <div class="owl-portfolio owl-carousel">
-						<div class="item">
-							<div class="owl-portfolio-item"><img src="../../import/images/demo/portfolio-7.jpg" class="img-responsive" alt="portfolio"></div>
-						</div>
-						<div class="item">
-							<div class="owl-portfolio-item"><img src="../../import/images/demo/portfolio-8.jpg" class="img-responsive" alt="portfolio"></div>
-						</div>
-						<div class="item">
-							<div class="owl-portfolio-item"><img src="../../import/images/demo/portfolio-9.jpg" class="img-responsive" alt="portfolio"></div>
-						</div>
-					</div> -->
 
 				</div>
 			</div>
@@ -52,9 +35,24 @@
 <script>
 
 import carousel from 'vue-owl-carousel'
+import axios from 'axios'
 export default {
     name:'Weare',
 	components: { carousel },
+	data () {
+	return {
+					Services_title: null,
+					Services_Card: null,
+			}
+	},
+	mounted () {
+			axios
+			.get('http://localhost:8000/api/menu')
+			.then(response => (this.Services_title = response.data)),
+			axios
+			.get('http://localhost:8000/api/menu')
+			.then(response => (this.Services_Card = response.data[0].front_sub_menu))
+	} 
 }
 </script>
 
