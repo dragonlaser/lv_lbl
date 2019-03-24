@@ -139,7 +139,7 @@
                 dataType: 'json',
                 data: $(this).serialize()
             }).done(function (result) {
-                console.log(result);
+                window.location.reload();
             }).fail(function () {
 
             });
