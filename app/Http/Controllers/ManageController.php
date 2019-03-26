@@ -12,13 +12,13 @@ class ManageController extends Controller
 
     public function main()
     {
-        $data['users'] = \Laraspace\User::get();
+        $data['users'] = \Laraspace\Models\Employee::get();
         $data['menu'] = 'Manage';
         return view('admin.manage.main')->with($data);
     }
     public function detail()
     {
-        $data['users'] = \Laraspace\User::get();
+        $data['users'] = \Laraspace\Models\Employee::get();
         $data['main'] = \Laraspace\Models\FrontMenu::get();
         $data['menu'] = 'Manage';
         return view('admin.manage.detail')->with($data);
@@ -30,20 +30,20 @@ class ManageController extends Controller
     }
     public function content()
     {
-        $data['users'] = \Laraspace\User::get();
-        $data['categories'] = \Laraspace\Models\FrontCategory::get();
+        $data['users'] = \Laraspace\Models\Employee::get();
+        $data['categories'] = \Laraspace\Models\Category::get();
         $data['menu'] = 'Content';
         return view('admin.manage.content')->with($data);
     }
     public function category()
     {
-        $data['users'] = \Laraspace\User::get();
+        $data['users'] = \Laraspace\Models\Employee::get();
         $data['menu'] = 'category';
         return view('admin.manage.category')->with($data);
     }
     public function customer()
     {
-        $data['users'] = \Laraspace\User::get();
+        $data['users'] = \Laraspace\Models\Employee::get();
         $data['menu'] = 'customer';
         return view('admin.manage.customer')->with($data);
     }
@@ -94,10 +94,10 @@ class ManageController extends Controller
         $insert['created_at'] = date('Y-m-d H:i:s');
         unset($insert['id']);
         if($request->id == null) {
-            \Laraspace\Models\FrontContent::insert($insert);
+            \Laraspace\Models\Content::insert($insert);
         } else {
             $insert['updated_at'] = date('Y-m-d H:i:s');
-            \Laraspace\Models\FrontContent::where('id', $request->id)->update($insert);
+            \Laraspace\Models\Content::where('id', $request->id)->update($insert);
         }
     }
     public function category_store(Request $request)
@@ -106,10 +106,10 @@ class ManageController extends Controller
         $insert['created_at'] = date('Y-m-d H:i:s');
         unset($insert['id']);
         if($request->id == null) {
-            \Laraspace\Models\FrontCategory::insert($insert);
+            \Laraspace\Models\Category::insert($insert);
         } else {
             $insert['updated_at'] = date('Y-m-d H:i:s');
-            \Laraspace\Models\FrontCategory::where('id', $request->id)->update($insert);
+            \Laraspace\Models\Category::where('id', $request->id)->update($insert);
         }
     }
     public function customer_store(Request $request)
@@ -143,11 +143,11 @@ class ManageController extends Controller
     }
     public function content_show($id)
     {
-        return json_encode(\Laraspace\Models\FrontContent::find($id));
+        return json_encode(\Laraspace\Models\Content::find($id));
     }
     public function category_show($id)
     {
-        return json_encode(\Laraspace\Models\FrontCategory::find($id));
+        return json_encode(\Laraspace\Models\Category::find($id));
     }
     public function customer_show($id)
     {
@@ -172,11 +172,11 @@ class ManageController extends Controller
     }
     public function content_delete($id)
     {
-        \Laraspace\Models\FrontContent::where('id', $id)->delete();
+        \Laraspace\Models\Content::where('id', $id)->delete();
     }
     public function category_delete($id)
     {
-        \Laraspace\Models\FrontCategory::where('id', $id)->delete();
+        \Laraspace\Models\Category::where('id', $id)->delete();
     }
     public function customer_delete($id)
     {
@@ -242,7 +242,7 @@ class ManageController extends Controller
         ->toJson();
     }
     public function content_lists(){
-        $model = \Laraspace\Models\FrontContent::leftjoin('front_categories', 'front_categories.id', 'front_contents.category_id')->select('front_contents.*', 'front_categories.name');
+        $model = \Laraspace\Models\Content::leftjoin('categories', 'categories.id', 'contents.category_id')->select('contents.*', 'categories.name');
         return  \DataTables::eloquent($model)
         ->addColumn('action',function($rec){
             $str = '
@@ -260,7 +260,7 @@ class ManageController extends Controller
         ->toJson();
     }
     public function category_lists(){
-        $model = \Laraspace\Models\FrontCategory::select();
+        $model = \Laraspace\Models\Category::select();
         return  \DataTables::eloquent($model)
         ->addColumn('action',function($rec){
             $str = '
