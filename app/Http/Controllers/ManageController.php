@@ -178,7 +178,7 @@ class ManageController extends Controller
     {
         \Laraspace\Models\FrontCategory::where('id', $id)->delete();
     }
-    public function Customer_delete($id)
+    public function customer_delete($id)
     {
         \Laraspace\Models\CustomerCompany::where('id', $id)->delete();
     }
