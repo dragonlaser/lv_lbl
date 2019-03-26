@@ -79,6 +79,7 @@
                 $('#title').val(data.title);                
                 $('#detail').val(data.detail);
                 $('#category_id').val(data.category_id);
+                $('#thumbnail').val(data.thumbnail);
                 $('.modal').modal('show');
             },
             error: function (data) {
@@ -154,6 +155,10 @@
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input class="form-control" type="text" name="title" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="thumbnail">Thumbnail</label>
+                        <input class="form-control" type="text" name="thumbnail" id="thumbnail">
                     </div>
                     <div class="form-group">
                         <label for="detail">Detail</label>
