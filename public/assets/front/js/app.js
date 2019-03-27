@@ -1802,82 +1802,6 @@ module.exports = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    name: 'Contact'
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/front/js/components/Detail.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__("./node_modules/axios/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
@@ -1915,6 +1839,110 @@ module.exports = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+	name: 'Contact',
+	data: function data() {
+		return {
+			items: [{ message: 'เว็ปขายของออนไลน์' }, { message: 'โปรแกรมใช้งานภายใน' }, { message: 'โปรแกรมบัญชี' }, { message: 'โปรแกรมสต็อกสินค้า' }, { message: 'โปแกรมบริหารบุคคล' }],
+			post: {},
+			posts: [],
+			contact_type_list: null
+		};
+	},
+
+	methods: {
+		addPost: function addPost() {
+			console.log(this.post);
+			//let url = '/api/post/create';
+			// this.axios.post(url, this.post).then((response) => {
+			// 	this.$router.push({name: 'posts'});
+			// });
+		}
+	},
+	mounted: function mounted() {
+		var _this = this;
+
+		__WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('http://localhost:8000/admin/manages/contact_type_list').then(function (response) {
+			return _this.contact_type_list = response.data;
+		}, console.log(this.response));
+	}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/front/js/components/Detail.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__("./node_modules/axios/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 //get api
@@ -1925,17 +1953,14 @@ module.exports = {
     name: 'Detail',
     data: function data() {
         return {
-            info: null,
-            test: null
+            banner_title: null
         };
     },
     mounted: function mounted() {
         var _this = this;
 
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('https://reqres.in/api/unknown').then(function (response) {
-            return _this.info = response.data.data;
-        }), __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('https://reqres.in/api/unknown').then(function (response) {
-            return _this.test = response.data.data;
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('http://localhost:8000/api/menu').then(function (response) {
+            return _this.banner_title = response.data;
         });
     }
 });
@@ -2106,77 +2131,8 @@ module.exports = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__("./node_modules/axios/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
 //
@@ -2209,8 +2165,21 @@ module.exports = {
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["a"] = ({
-    name: 'Our-project'
+	name: 'Our-project',
+	data: function data() {
+		return {
+			portfolio_title: null
+		};
+	},
+	mounted: function mounted() {
+		var _this = this;
+
+		__WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('http://localhost:8000/api/menu').then(function (response) {
+			return _this.portfolio_title = response.data[0].front_sub_menu;
+		});
+	}
 });
 
 /***/ }),
@@ -2322,23 +2291,22 @@ module.exports = {
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-	name: 'Services',
+				name: 'Services',
+				data: function data() {
+								return {
+												Services_title: null,
+												Services_Card: null
+								};
+				},
+				mounted: function mounted() {
+								var _this = this;
 
-	data: function data() {
-		return {
-			Services_title: null,
-			Services_Card: null
-		};
-	},
-	mounted: function mounted() {
-		var _this = this;
-
-		__WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('http://localhost:8000/api/menu').then(function (response) {
-			return _this.Services_title = response.data;
-		}), __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('http://localhost:8000/api/menu').then(function (response) {
-			return _this.Services_Card = response.data[0].front_sub_menu;
-		});
-	}
+								__WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('http://localhost:8000/api/menu').then(function (response) {
+												return _this.Services_title = response.data;
+								}), __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('http://localhost:8000/api/menu').then(function (response) {
+												return _this.Services_Card = response.data[0].front_sub_menu;
+								});
+				}
 });
 
 /***/ }),
@@ -2471,7 +2439,7 @@ exports.push([module.i, "@import url(http://fonts.googleapis.com/css?family=Open
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Mitr:300,400,500);", ""]);
 
 // module
-exports.push([module.i, "/*------------------------------------------------------------------\n[Master Stylesheet]\n\nProject:\tSanza - One page multi purpose page\nVersion:\t1.0\nLast change:\t17/08/2015 [...]\nDesigned by:\tMOOZ Themes / www.MOOZthemes.com\nPrimary use:\tOne page\n\n[Table of contents]\n\n1. General\n2. Header\n3. Navigation\n4. Sections\n5. Footer\n6. Components\n\n[Color codes]\n\nButtons, etc:\t#726FB9 (blue)\nhover color:\t#fed136 (yellow)\n-------------------------------------------------------------------*/\n\n/*--------------------\nImport Google Fonts\n--------------------*/\n\n/* main font for menu. */\n/* font for headings, text, tags */\n\n/*--------------------\n1. General\n--------------------*/\n\nbody {\n\tmargin: 0px;\n\tfont-family: 'Mitr', sans-serif;\n}\na,span,div{\n\tfont-family: 'Mitr', sans-serif;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n\tfont-weight: 300;\n\tletter-spacing: 0.4px;\n\tfont-family: 'Mitr', sans-serif;\n\tcolor: #232323;\n}\n\np {\n\tfont-size: 16px;\n\tfont-weight: 300;\n\tline-height: 23px;\n\tletter-spacing: 0.2px;\n\tcolor: #2b2b2b;\n}\n\n.dark-bg p {\n\tcolor: #2b2b2b;\n}\n\n\n.set_logo{\n\twidth: 240px;\n\theight: auto;\n\tmargin-top: -8px;\n}\n\n\na:hover, a:focus, a:active, a.active {\n\tcolor: #fec503;\n}\na, a:hover, a:focus, a:active, a.active {\n\toutline: 0;\n\ttext-decoration: none!important;\n}\n\n::selection {\n\ttext-shadow: none;\n\tbackground: #fed136;\n}\n\n.navbar > .container, .navbar > .container-fluid {\n\tdisplay: block;\n\tflex-wrap: wrap;\n\talign-items: center;\n\tjustify-content: space-between;\n}\n.navbar-nav {\n\tdisplay: block;\n\tflex-direction: column;\n\tpadding-left: 0;\n\tmargin-bottom: 0;\n\tlist-style: none;\n}\n\nimg.fix-img {\n\tfloat:left;\n\twidth:100%;\n\theight:100%;\n\tobject-fit:cover;\n}\n.cat-img {\n\theight: 240px;\n\twidth: 100%;\n}\n.cat-title {\n\toverflow: hidden;\n\theight: 33px;\n}\n.cat-title-link > a > h4{\n\tcolor: #454545;\n\tfont-weight: 400;\n}\n.cat-title-link > a > h4:hover{\n\tcolor: #23AD21;\n\ttransition: 0.3s;\n}\n.cat-exc {\n\toverflow: hidden;\n\theight: 40px;\n\tline-height: 1.2;\n}\n.cat-btn-link {\n\tbackground-color: #fff!important;\n\tborder: 1px solid #23ad21!important;\n\tcolor: #23ad21!important;\n\tborder-radius: 50px!important;\n}\n.cat-btn-link:hover {\n\tbackground-color: #23ad21!important;\n\tborder: 1px solid #23ad21!important;\n\tcolor: #fff!important;\n\ttransition: 0.3s;\n}\n.detail-port-time {\n\tfont-size: smaller;\n\tfont-weight: 100;\n\tcolor: #616161;\n}\n\nsection {\n\tpadding: 70px 0;\n}\n\nul {\n\tpadding-left: 0;\n\tpadding-top: 10px;\n}\n\nul li {\n\tlist-style: none;\n\tpadding-bottom: 10px;\n\tfont-family: 'Mitr', sans-serif;\n\tfont-size: 14px;\n\tfont-weight: 500;\n\tline-height: 23px;\n\tletter-spacing: 0.2px;\n\tcolor: #000000;\n}\n\nsection ul li:before {\n\tfont-family: FontAwesome;\n\tfont-weight: normal;\n\tfont-style: normal;\n\tdisplay: inline-block;\n\ttext-decoration: inherit;\n\tcontent: \"\\F105\";\n\tpadding-right: 7px;\n\tcolor: #23AD21;\n}\n\n/*--------------------\n1.1 Reset bootstrap\n--------------------*/\n\n.row-0-gutter {\n\tmargin-left: -13px;\n\tmargin-right: -13px;\n}\n\n.col-0-gutter {\n\tpadding-left: 0;\n\tpadding-right: 0;\n}\n\n/*--------------------\n2. Navigation\n--------------------*/\n.text-white {\n\tcolor: #fff;\n}\n.navbar-default {\n\tbackground-color: #fff;\n\tborder-color: transparent\n\t\n}\n.navbar-default .navbar-brand {\n\tcolor: #fff;\n\tfont-family: \"Montserrat\",sans-serif;\n\tpadding: 0px;\n}\n.navbar-default .navbar-brand:hover,.navbar-default .navbar-brand:focus,.navbar-default .navbar-brand:active,.navbar-default .navbar-brand.active {\n\tcolor: #fec503\n}\n.navbar-default .navbar-collapse {\n\tborder-color: rgba(255,255,255,.02)\n}\n.navbar-default .navbar-toggle {\n\tbackground-color: #fed136;\n\tborder-color: #fed136\n}\n.navbar-default .navbar-toggle .icon-bar {\n\tbackground-color: #fff\n}\n.navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus {\n\tbackground-color: #fed136\n}\n.navbar-default .nav li a {\n\tfont-family: 'Mitr', sans-serif;\n\ttext-transform: uppercase;\n\tfont-weight: 500;\n\tletter-spacing: 1px;\n\tcolor:#000;\n}\n.navbar-default .nav li a:hover,.navbar-default .nav li a:focus {\n\tcolor: #2b2b2b;\n\toutline: 0;\n\tborder-bottom: 2px solid #2b2b2b;\n}\n\n.navbar-default .navbar-nav>.active>a {\n\tborder-radius: 0;\n\tcolor: #fff;\n\tbackground-color: #fed136\n}\n.navbar-default .navbar-nav>.active>a:hover,.navbar-default .navbar-nav>.active>a:focus {\n\tcolor: #fff;\n\tbackground-color: #fec503\n}\n\n\nheader {\n\tbackground-image: url(" + escape(__webpack_require__("./resources/front/import/images/demo/slider1.jpg")) + ");\n\tbackground-repeat: none;\n\tbackground-attachment: scroll;\n\tbackground-position: center center;\n\t-webkit-background-size: cover;\n\t-moz-background-size: cover;\n\tbackground-size: cover;\n\t-o-background-size: cover;\n\ttext-align: center;\n\tcolor: #fff;\n}\n\nheader .intro-text {\n\tpadding-top: 100px;\n\tpadding-bottom: 50px;\n}\nhr.hr-title {\n\tborder-color: #23AD21;\n\tborder-width: 2px;\n\tmargin-top: 10px;\n\tmargin-bottom: 10px;\n}\n.heading {\n    border-bottom: 2px solid #f3f3f3;\n\t\tposition: relative;\n\t\tpadding-bottom: 20px;\n}\n.heading:after {\n\t\tcontent: \"\";\n\t\tdisplay: block;\n\t\twidth: 200px;\n\t\theight: 2px;\n\t\tbackground: #23AD21;\n\t\tposition: absolute;\n\t\tleft: 0;\n\t\tbottom: -2px;\n}\n\nheader .intro-text .intro-lead-in {\n\tdisplay: inline-block;\n\tbackground-color: rgba(255, 255, 255, 0.65);\n\tmargin-bottom: 25px;\n\tpadding: 4px 20px;\n\tfont-family: \"Open Sans\",sans-serif;\n\tfont-size: 19px;\n\tcolor: #3E3E3E;\n\tfont-weight: 300;\n\tline-height: 40px;\n}\nheader .intro-text .intro-heading {\n\ttext-transform: uppercase;\n\tfont-weight: 900;\n\tfont-size: 40px;\n\tline-height: 48px;\n\tmargin-bottom: 25px;\n\tletter-spacing: -3px;\n\tword-spacing: 10px;\n\tcolor: #FFFFFF;\n\ttext-shadow: 1px 1px 1px rgb(0, 0, 0);\n}\n\n/*--------------------\n4. Sections\n--------------------*/\n\n.section-title h2 {\n\tfont-size: 34px;\n\ttext-transform: uppercase;\n\tcolor: #5D5D5D;\n\tfont-weight: 800;\n\tletter-spacing: -0.6px;\n\tposition: relative;\n\tmargin-bottom: 20px;\n\tpadding-bottom: 15px;\n}\n\n.section-title h2:after {\n\tleft: 50%;\n\tz-index: 1;\n\twidth: 40px;\n\theight: 2px;\n\tcontent: \" \";\n\tbottom: -5px;\n\tmargin-left: -20px;\n\ttext-align: center;\n\tposition: absolute;\n\tbackground: #23AD21;\n}\n\n.dark-bg .section-title h2 {\n  color: #2b2b2b;\n}\n.section-title p {\n\tfont-size: 16px;\n\tfont-weight: 300;\n\tline-height: 25px;\n\tmargin: 20px 100px 60px 100px;\n}\n\n/*--------------------\n4.1. About\n--------------------*/\n\n.mz-module-about h3 {\n\tfont-weight: 500;\n\tfont-size: 19px;\n\ttext-transform: uppercase;\n\tcolor: #000000;\n\tletter-spacing: 2px;\n\tmargin-bottom: 20px;\n}\n\n.dark-bg .mz-module-about h3 {\n\tcolor: #2b2b2b;\n}\n\n.mz-module-about p {\n\tfont-size: 14px;\n\tfont-weight: 300;\n\tline-height: 22px;\n\tcolor: #2b2b2b;\n}\n\n.ot-circle {\n\theight: 95px;\n\twidth: 95px;\n\ttext-align: center;\n\tline-height: 98px!important;\n\tcolor: #FFFFFF;\n\t/* border: 3px solid #000; */\n\tborder-radius: 100px;\n\tbackground-color: #23AD21;\n\tmargin: 0 2px 4px;\n\tfont-size: 24px!important;\n}\n\n/*--------------------\n4.2. Skills\n--------------------*/\n\n.section-text h3 {\n\tmargin: 0 0 30px;\n\tfont-weight: 800;\n\tcolor: #5D5D5D;\n}\n\n.section-text h4 {\n\tmargin: 0 0 20px;\n\tfont-weight: 700;\n\tfont-size: 17px;\n}\n\n.dark-bg .section-text h3 {\n\tcolor: #dfdfdf;\n}\n\n.dark-bg .section-text h4 {\n\tcolor: #2b2b2b;\n}\n\n/*--------------------\n4.3. Portfolio\n--------------------*/\n\nfigure {\n\tposition: relative;\n\toverflow: hidden;\n\tmargin: 0 1px 1px 0;\n\tbackground: #726FB9;\n\ttext-align: center;\n\tcursor: pointer;\n}\n\nfigcaption {\n\tposition: absolute;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n}\n\n.ot-portfolio-item figure figcaption > a {\n\tz-index: 1000;\n\ttext-indent: 200%;\n\twhite-space: nowrap;\n\tfont-size: 0;\n\topacity: 0;\n}\n.ot-portfolio-item figure figcaption, .ot-portfolio-item figure figcaption > a {\n\tposition: absolute;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n}\n\nfigure.effect-bubba {\n\tbackground: #000;\n\tmargin-bottom: 1px;\n}\n\nfigure.effect-bubba img {\n\t/* opacity: 0.95; */\n\t-webkit-transition: opacity 0.35s;\n\ttransition: opacity 0.35s;\n}\n\nfigure.effect-bubba:hover img {\n\topacity: 0.4;\n}\n\nfigure.effect-bubba figcaption::before,\nfigure.effect-bubba figcaption::after {\n\tposition: absolute;\n\ttop: 30px;\n\tright: 30px;\n\tbottom: 30px;\n\tleft: 30px;\n\tcontent: '';\n\topacity: 0;\n\t-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;\n\ttransition: opacity 0.35s, transform 0.35s;\n}\n\nfigure.effect-bubba figcaption::before {\n\tborder-top: 1px solid #fff;\n\tborder-bottom: 1px solid #fff;\n\t-webkit-transform: scale(0,1);\n\ttransform: scale(0,1);\n}\n\nfigure.effect-bubba figcaption::after {\n\tborder-right: 1px solid #fff;\n\tborder-left: 1px solid #fff;\n\t-webkit-transform: scale(1,0);\n\ttransform: scale(1,0);\n}\n\nfigure.effect-bubba h2 {\n\topacity: 0;\n\tcolor: #fff;\n\tfont-size: 15px;\n\tfont-weight: 700;\n\ttext-transform: uppercase;\n\tpadding-top: 30%;\n\t-webkit-transition: -webkit-transform 0.35s;\n\ttransition: transform 0.35s;\n\t-webkit-transform: translate3d(0,-20px,0);\n\ttransform: translate3d(0,-20px,0);\n}\n\nfigure.effect-bubba p {\n\tcolor: #fff;\n\tfont-size: 13px;\n\tfont-weight: 500;\n\tpadding: 20px 2.5em;\n\topacity: 0;\n\t-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;\n\ttransition: opacity 0.35s, transform 0.35s;\n\t-webkit-transform: translate3d(0,20px,0);\n\ttransform: translate3d(0,20px,0);\n}\n\nfigure.effect-bubba:hover figcaption::before,\nfigure.effect-bubba:hover figcaption::after {\n\topacity: 1;\n\t-webkit-transform: scale(1);\n\ttransform: scale(1);\n}\n\nfigure.effect-bubba:hover h2,\nfigure.effect-bubba:hover p {\n\topacity: 1;\n\t-webkit-transform: translate3d(0,0,0);\n\ttransform: translate3d(0,0,0);\n}\n\n/*--------------------\n4.4. Dark Short section (counters, quote, etc)\n--------------------*/\n\n.light-bg {\n\tbackground-color: #f8f8f8;\n}\n\n.dark-bg {\n\tbackground-color: #f8f8f8;\n\tcolor: #fff;\n}\n\n.short-section {\n\tborder-top: 1px solid #5D5D5F;\n\tborder-bottom: 1px solid #5D5D5F;\n\tpadding-top: 70px;\n\tpadding-bottom: 70px;\n}\n\n.counter-item h2 {\n\tcolor: #fff;\n\tfont-size: 60px;\n\tfont-weight: 900;\n}\n\n.counter-item h6 {\n\tcolor: #FFF;\n\tfont-size: 16px;\n\tfont-weight: 700;\n\tmargin: 10px 0 0 0;\n\ttext-transform: uppercase;\n}\n\n/*--------------------\n4.5. Partners Slider\n--------------------*/\n\n.owl-portfolio .owl-controls {\n\tposition: absolute;\n\tleft: 0;\n\ttop: 38%;\n\twidth: 100%;\n}\n\n.owl-portfolio .owl-controls .owl-nav [class*=owl-] {\n\tpadding: 8px 17px;\n\tbackground: rgba(0, 0, 0, 0.18);\n\tborder-radius: 0;\n\tmargin: 0;\n\tfont-size: 20px;\n\tz-index:1000;\n}\n\n.owl-portfolio .owl-controls .owl-nav [class*=owl-]:hover {\n\tbackground: #000;\n\tcolor: #fff;\n\ttext-decoration: none;\n}\n\n.owl-portfolio .owl-controls .owl-prev {\n\tfloat: left;\n}\n\n.owl-portfolio .owl-controls .owl-next {\n\tfloat: right;\n}\n\n.owl-portfolio-item {\n\ttext-align: center;\n\tdisplay: inline-block;\n}\n\n.partner-logo {\n\theight: 80px;\n\ttext-align: center;\n\tdisplay: inline-block;\n}\n\n.partner-logo img {\n\theight: 100%;\n\twidth: auto !important;\n}\n\n.owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {\n\tbackground: #23AD21;\n}\n\n.owl-theme .owl-dots .owl-dot span {\n\twidth: 30px;\n\theight: 5px;\n\tmargin: 15px 7px 0 7px;\n\tbackground: #d6d6d6;\n\tdisplay: block;\n\t-webkit-backface-visibility: visible;\n\t-webkit-transition: opacity 200ms ease;\n\t-moz-transition: opacity 200ms ease;\n\t-ms-transition: opacity 200ms ease;\n\t-o-transition: opacity 200ms ease;\n\ttransition: opacity 200ms ease;\n\t-webkit-border-radius: 30px;\n\t-moz-border-radius: 30px;\n\tborder-radius: 0;\n}\n\n.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {\n\tbackground: #23AD21;\n}\n\n/*--------------------\n4.6. Team\n--------------------*/\n\n.team-item {\n\ttext-align: center;\n\tbackground-color: #fff;\n}\n\n.team-item h3 {\n\tfont-size: 16px;\n\tfont-weight: 800;\n\ttext-transform: uppercase;\n\tcolor: #2D2D2D;\n}\n\n.team-item .team-position {\n\tcolor: #656262;\n\tfont-size: 12px;\n\tmargin: 15px 0 10px;\n\ttext-transform: uppercase;\n\tfont-weight: 500;\n\tletter-spacing: 2px;\n}\n\n.team-item p {\n\tfont-size: 13px;\n\tfont-weight: 400;\n\tcolor: #292929;\n\tpadding: 5px 10px 20px 10px;\n}\n\n/*--------------------\n4.7. Contacts\n--------------------*/\n\nsection#contact form {\n\tmargin-top: 15px;\n}\nsection#contact.form-group {\n\tmargin-bottom: 25px;\n}\n\nsection#contact .form-group input, section#contact .form-group textarea {\n\tpadding: 15px;\n\tborder: 1px solid #BBBBBB;\n\tborder-radius: 0;\n\t-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);\n\tbox-shadow: inset 0 0px 0px rgba(0,0,0,.075);\n\tfont-size: 13px;\n}\n\n.contact h3 {\n\tmargin-bottom: 30px;\n}\n\n.contact p {\n\tfont-size: 13px;\n}\n\n.contact .day {\n\tdisplay: inline-block;\n\twidth: 80px;\n}\n\n.contact i {\n\tmargin-right: 5px;\n}\n\n/*--------------------\n5. Footer\n--------------------*/\n\nfooter {\n\tpadding: 30px;\n\tbackground-color: #000;\n}\n\nfooter p {\n\tcolor: #B7B7B7;\n\tmargin: 0;\n\tfont-size: 10px;\n\ttext-transform: uppercase;\n\tfont-weight: 500;\n\tletter-spacing: 1.6px;\n}\n\nfooter p a {\n\tcolor: #fff;\n}\n\nfooter p a span {\n\tcolor: #23AD21;\n\tfont-size: 10px;\n\tletter-spacing: 1px;\n\tfont-weight: 700;\n}\n\n/*--------------------\n6. Modal\n--------------------*/\n\n.modal-content {\n\tborder-radius: 0;\n}\n.modal-header .close {\n\tfont-size: 30px;\n}\n.modal-title {\n\ttext-transform: uppercase;\n\tfont-size: 23px;\n}\n\n.modal-body {\n\tpadding: 0;\n}\n\n.modal-body p {\n\tmargin: 30px 20px;\n\tcolor: #2D2D2D;\n}\n\n.modal-works {\n\tfont-size: 11px;\n\tletter-spacing: 1px;\n\ttext-transform: uppercase;\n\tfont-weight: 500;\n\tcolor: #fff;\n\tmargin: 25px 20px;\n}\n\n.modal-works span {\n\tbackground-color: #FED136;\n\tmargin-right: 15px;\n\tpadding: 5px 10px;\n}\n\n/*--------------------\n7. Components\n--------------------*/\n\n.btn-xl:hover, .btn-xl:focus, .btn-xl:active, .btn-xl.active, .open .dropdown-toggle.btn-xl {\n\tcolor: #fff;\n\tbackground-color: #fec503;\n\tborder-color: #f6bf01;\n}\n\n.btn:hover, .btn:focus, .btn:active, .btn.active, .open .dropdown-toggle.btn {\n\tcolor: #fff;\n\tbackground-color: #21831f;\n\tborder-color: #21831f;\n\ttransition: 0.3s;\n}\n\n.btn {\n\tdisplay: inline-block;\n\tpadding: 8px 20px;\n\tmargin-bottom: 0;\n\tfont-size: 14px;\n\tfont-weight: 400;\n\tline-height: 1.42857143;\n\ttext-align: center;\n\twhite-space: nowrap;\n\tvertical-align: middle;\n\t-ms-touch-action: manipulation;\n\ttouch-action: manipulation;\n\tcursor: pointer;\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\t-ms-user-select: none;\n\tuser-select: none;\n\tbackground-image: none;\n\tborder: 1px solid transparent;\n\tborder-radius: 4px;\n\tbackground-color: #23AD21;\n}\n\n.btn-xl {\n\tcolor: #fff;\n\tbackground-color: #23AD21;\n\t/* border-color: #726FB9; */\n\tfont-family: 'Mitr', sans-serif;\n\ttext-transform: uppercase;\n\tfont-weight: 800;\n\tborder-radius: 0;\n\tletter-spacing: 2px;\n\tfont-size: 16px;\n\tpadding: 17px 45px;\n}\n\n/* Back to top button\n---------------------------------- */\n#back-top {\n\tposition: fixed;\n\tz-index: 1000;\n\tbottom: 40px;\n\tright: 50px;\n}\n#back-top a {\n\twidth: 60px;\n\theight: 60px;\n\tdisplay: block;\n\ttext-align: center;\n\tfont: 11px/100% Arial, Helvetica, sans-serif;\n\ttext-transform: uppercase;\n\ttext-decoration: none;\n\tcolor: #FFFFFF;\n\tbackground: #A9A9B1;\n\t/* background color transition */\n\t-webkit-transition: 1s;\n\t-moz-transition: 1s;\n\ttransition: 1s;\n}\n#back-top a:hover {\n\tbackground: #fed136;\n}\n/* arrow icon (span tag) */\n#back-top i {\n\tmargin-top: 15px;\n\tfont-size: 28px;\n}\n\n/* ----------- RESPONSIVE -------- */\n@media (max-width: 575px){\n\t.set_logo {\n\t\t\twidth: 200px;\n\t}\n\t.cat-img {\n\t\t\theight: 60vmin;\n\t\t\twidth: 100%;\n\t}\n}\n\n@media (max-width: 568px) and (max-height: 320px) {\n\t.cat-img {\n\t\t\theight: 320px;\n\t\t\twidth: 100%;\n\t}\n}\n\n@media (min-width: 576px) {\n\t.cat-img {\n\t\t\theight: 195px;\n\t\t\twidth: 100%;\n\t}\n}\n\n\n@media (min-width: 768px) {\n\t.navbar-default\n\t{\n\t\tbackground-color: rgb(255, 255, 255);\n\t\tpadding: 5px 0;\n\t\t-webkit-transition:padding .3s!important;\n\t\t-moz-transition:padding .3s!important;\n\t\ttransition:padding .3s!important;\n\t\tborder:0\n\t}\n\t.navbar-default .navbar-brand {\n\t\tfont-size: 2em;\n\t\t-webkit-transition:all .3s!important;\n\t\t-moz-transition:all .3s!important;\n\t\ttransition:all .3s!important;\n\t}\n\t.navbar-default .navbar-nav>.active>a {\n\t\tborder-radius: 3px;\n\t}\n\t.navbar-default.navbar-shrink {\n\t\tbackground-color: #FFFFFF;\n\t\tborder-bottom: 1px solid #828282;\n\t\tpadding: 5px 0;\n\t}\n\t.navbar-default.navbar-shrink .navbar-brand {\n\t\tfont-size: 1.5em;\n\t\tmargin-top: 10px;\n\t}\n\theader .intro-text {\n\t\tpadding-top: 230px;\n\t\tpadding-bottom: 400px;\n\t}\n\theader .intro-text .intro-lead-in {\n\t\tfont-size: 29px;\n\t\tline-height: 40px;\n\t\tmargin-bottom: 45px;\n\t}\n\theader .intro-text .intro-heading {\n\t\tline-height: 95px;\n\t\tfont-size: 77px;\n\t\tmargin-bottom: 50px;\n\t}\n\t.cat-img {\n\t\t\theight: 250px;\n\t\t\twidth: 100%;\n\t}\n}\n\n\n@media (min-width: 992px) {\n\t.cat-img {\n\t\t\theight: 220px;\n\t\t\twidth: 100%;\n\t}\n}\n\n@media (min-width: 1200px) {\n\t.cat-img {\n\t\t\theight: 260px;\n\t\t\twidth: 100%;\n\t}\n}\n\n\n@media (min-width: 1600px) {\n\t.cat-img {\n\t\t\theight: 235px;\n\t\t\twidth: 100%;\n\t}\n}\n", ""]);
+exports.push([module.i, "/*------------------------------------------------------------------\n[Master Stylesheet]\n\nProject:\tSanza - One page multi purpose page\nVersion:\t1.0\nLast change:\t17/08/2015 [...]\nDesigned by:\tMOOZ Themes / www.MOOZthemes.com\nPrimary use:\tOne page\n\n[Table of contents]\n\n1. General\n2. Header\n3. Navigation\n4. Sections\n5. Footer\n6. Components\n\n[Color codes]\n\nButtons, etc:\t#726FB9 (blue)\nhover color:\t#fed136 (yellow)\n-------------------------------------------------------------------*/\n\n/*--------------------\nImport Google Fonts\n--------------------*/\n\n/* main font for menu. */\n/* font for headings, text, tags */\n\n/*--------------------\n1. General\n--------------------*/\n\nbody {\n\tmargin: 0px;\n\tfont-family: 'Mitr', sans-serif;\n}\na,span,div{\n\tfont-family: 'Mitr', sans-serif;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n\tfont-weight: 300;\n\tletter-spacing: 0.4px;\n\tfont-family: 'Mitr', sans-serif;\n\tcolor: #232323;\n}\n\np {\n\tfont-size: 16px;\n\tfont-weight: 300;\n\tline-height: 23px;\n\tletter-spacing: 0.2px;\n\tcolor: #2b2b2b;\n}\n\n.dark-bg p {\n\tcolor: #2b2b2b;\n}\n\n\n.set_logo{\n\twidth: 240px;\n\theight: auto;\n\tmargin-top: -8px;\n}\n\n.rounded-0 {\n\tborder-radius: 0px!important;\n}\na:hover, a:focus, a:active, a.active {\n\tcolor: #fec503;\n}\na, a:hover, a:focus, a:active, a.active {\n\toutline: 0;\n\ttext-decoration: none!important;\n}\n\n::selection {\n\ttext-shadow: none;\n\tbackground: #fed136;\n}\n\n.navbar > .container, .navbar > .container-fluid {\n\tdisplay: block;\n\tflex-wrap: wrap;\n\talign-items: center;\n\tjustify-content: space-between;\n}\n.navbar-nav {\n\tdisplay: block;\n\tflex-direction: column;\n\tpadding-left: 0;\n\tmargin-bottom: 0;\n\tlist-style: none;\n}\n\nimg.fix-img {\n\tfloat:left;\n\twidth:100%;\n\theight:100%;\n\tobject-fit:cover;\n}\n.cat-img {\n\theight: 240px;\n\twidth: 100%;\n}\n.cat-title {\n\toverflow: hidden;\n\theight: 33px;\n}\n.cat-title-link > a > h4{\n\tcolor: #454545;\n\tfont-weight: 400;\n}\n.cat-title-link > a > h4:hover{\n\tcolor: #23AD21;\n\ttransition: 0.3s;\n}\n.cat-exc {\n\toverflow: hidden;\n\theight: 40px;\n\tline-height: 1.2;\n}\n.cat-btn-link {\n\tbackground-color: #fff!important;\n\tborder: 1px solid #23ad21!important;\n\tcolor: #23ad21!important;\n\tborder-radius: 50px!important;\n}\n.cat-btn-link:hover {\n\tbackground-color: #23ad21!important;\n\tborder: 1px solid #23ad21!important;\n\tcolor: #fff!important;\n\ttransition: 0.3s;\n}\n.detail-port-time {\n\tfont-size: smaller;\n\tfont-weight: 100;\n\tcolor: #616161;\n}\n\nsection {\n\tpadding: 70px 0;\n}\n\nul {\n\tpadding-left: 0;\n\tpadding-top: 10px;\n}\n\nul li {\n\tlist-style: none;\n\tpadding-bottom: 10px;\n\tfont-family: 'Mitr', sans-serif;\n\tfont-size: 14px;\n\tfont-weight: 500;\n\tline-height: 23px;\n\tletter-spacing: 0.2px;\n\tcolor: #000000;\n}\n\nsection ul li:before {\n\tfont-family: FontAwesome;\n\tfont-weight: normal;\n\tfont-style: normal;\n\tdisplay: inline-block;\n\ttext-decoration: inherit;\n\tcontent: \"\\F105\";\n\tpadding-right: 7px;\n\tcolor: #23AD21;\n}\n\n/*--------------------\n1.1 Reset bootstrap\n--------------------*/\n\n.row-0-gutter {\n\tmargin-left: -13px;\n\tmargin-right: -13px;\n}\n\n.col-0-gutter {\n\tpadding-left: 0;\n\tpadding-right: 0;\n}\n\n/*--------------------\n2. Navigation\n--------------------*/\n.text-white {\n\tcolor: #fff;\n}\n.navbar-default {\n\tbackground-color: #fff;\n\tborder-color: transparent\n\t\n}\n.navbar-default .navbar-brand {\n\tcolor: #fff;\n\tfont-family: \"Montserrat\",sans-serif;\n\tpadding: 0px;\n}\n.navbar-default .navbar-brand:hover,.navbar-default .navbar-brand:focus,.navbar-default .navbar-brand:active,.navbar-default .navbar-brand.active {\n\tcolor: #fec503\n}\n.navbar-default .navbar-collapse {\n\tborder-color: rgba(255,255,255,.02)\n}\n.navbar-default .navbar-toggle {\n\tbackground-color: #fed136;\n\tborder-color: #fed136\n}\n.navbar-default .navbar-toggle .icon-bar {\n\tbackground-color: #fff\n}\n.navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus {\n\tbackground-color: #fed136\n}\n.navbar-default .nav li a {\n\tfont-family: 'Mitr', sans-serif;\n\ttext-transform: uppercase;\n\tfont-weight: 500;\n\tletter-spacing: 1px;\n\tcolor:#000;\n}\n.navbar-default .nav li a:hover,.navbar-default .nav li a:focus {\n\tcolor: #2b2b2b;\n\toutline: 0;\n\tborder-bottom: 2px solid #2b2b2b;\n}\n\n.navbar-default .navbar-nav>.active>a {\n\tborder-radius: 0;\n\tcolor: #fff;\n\tbackground-color: #fed136\n}\n.navbar-default .navbar-nav>.active>a:hover,.navbar-default .navbar-nav>.active>a:focus {\n\tcolor: #fff;\n\tbackground-color: #fec503\n}\n\n\nheader {\n\tbackground-image: url(" + escape(__webpack_require__("./resources/front/import/images/demo/slider1.jpg")) + ");\n\tbackground-repeat: none;\n\tbackground-attachment: scroll;\n\tbackground-position: center center;\n\t-webkit-background-size: cover;\n\t-moz-background-size: cover;\n\tbackground-size: cover;\n\t-o-background-size: cover;\n\ttext-align: center;\n\tcolor: #fff;\n}\n\nheader .intro-text {\n\tpadding-top: 100px;\n\tpadding-bottom: 50px;\n}\nhr.hr-title {\n\tborder-color: #23AD21;\n\tborder-width: 2px;\n\tmargin-top: 10px;\n\tmargin-bottom: 10px;\n}\n.heading {\n    border-bottom: 2px solid #f3f3f3;\n\t\tposition: relative;\n\t\tpadding-bottom: 20px;\n}\n.heading:after {\n\t\tcontent: \"\";\n\t\tdisplay: block;\n\t\twidth: 200px;\n\t\theight: 2px;\n\t\tbackground: #23AD21;\n\t\tposition: absolute;\n\t\tleft: 0;\n\t\tbottom: -2px;\n}\n\nheader .intro-text .intro-lead-in {\n\tdisplay: inline-block;\n\tbackground-color: rgba(255, 255, 255, 0.65);\n\tmargin-bottom: 25px;\n\tpadding: 4px 20px;\n\tfont-family: \"Open Sans\",sans-serif;\n\tfont-size: 19px;\n\tcolor: #3E3E3E;\n\tfont-weight: 300;\n\tline-height: 40px;\n}\nheader .intro-text .intro-heading {\n\ttext-transform: uppercase;\n\tfont-weight: 900;\n\tfont-size: 40px;\n\tline-height: 48px;\n\tmargin-bottom: 25px;\n\tletter-spacing: -3px;\n\tword-spacing: 10px;\n\tcolor: #FFFFFF;\n\ttext-shadow: 1px 1px 1px rgb(0, 0, 0);\n}\n\n/*--------------------\n4. Sections\n--------------------*/\n\n.section-title h2 {\n\tfont-size: 34px;\n\ttext-transform: uppercase;\n\tcolor: #5D5D5D;\n\tfont-weight: 800;\n\tletter-spacing: -0.6px;\n\tposition: relative;\n\tmargin-bottom: 20px;\n\tpadding-bottom: 15px;\n}\n\n.section-title h2:after {\n\tleft: 50%;\n\tz-index: 1;\n\twidth: 40px;\n\theight: 2px;\n\tcontent: \" \";\n\tbottom: -5px;\n\tmargin-left: -20px;\n\ttext-align: center;\n\tposition: absolute;\n\tbackground: #23AD21;\n}\n\n.dark-bg .section-title h2 {\n  color: #2b2b2b;\n}\n.section-title p {\n\tfont-size: 16px;\n\tfont-weight: 300;\n\tline-height: 25px;\n\tmargin: 20px 100px 60px 100px;\n}\n\n/*--------------------\n4.1. About\n--------------------*/\n\n.mz-module-about h3 {\n\tfont-weight: 500;\n\tfont-size: 19px;\n\ttext-transform: uppercase;\n\tcolor: #000000;\n\tletter-spacing: 2px;\n\tmargin-bottom: 20px;\n}\n\n.dark-bg .mz-module-about h3 {\n\tcolor: #2b2b2b;\n}\n\n.mz-module-about p {\n\tfont-size: 14px;\n\tfont-weight: 300;\n\tline-height: 22px;\n\tcolor: #2b2b2b;\n}\n\n.ot-circle {\n\theight: 95px;\n\twidth: 95px;\n\ttext-align: center;\n\tline-height: 98px!important;\n\tcolor: #FFFFFF;\n\t/* border: 3px solid #000; */\n\tborder-radius: 100px;\n\tbackground-color: #23AD21;\n\tmargin: 0 2px 4px;\n\tfont-size: 24px!important;\n}\n\n/*--------------------\n4.2. Skills\n--------------------*/\n\n.section-text h3 {\n\tmargin: 0 0 30px;\n\tfont-weight: 800;\n\tcolor: #5D5D5D;\n}\n\n.section-text h4 {\n\tmargin: 0 0 20px;\n\tfont-weight: 700;\n\tfont-size: 17px;\n}\n\n.dark-bg .section-text h3 {\n\tcolor: #dfdfdf;\n}\n\n.dark-bg .section-text h4 {\n\tcolor: #2b2b2b;\n}\n\n/*--------------------\n4.3. Portfolio\n--------------------*/\n\nfigure {\n\tposition: relative;\n\toverflow: hidden;\n\tmargin: 0 1px 1px 0;\n\tbackground: #726FB9;\n\ttext-align: center;\n\tcursor: pointer;\n}\n\nfigcaption {\n\tposition: absolute;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n}\n\n.ot-portfolio-item figure figcaption > a {\n\tz-index: 1000;\n\ttext-indent: 200%;\n\twhite-space: nowrap;\n\tfont-size: 0;\n\topacity: 0;\n}\n.ot-portfolio-item figure figcaption, .ot-portfolio-item figure figcaption > a {\n\tposition: absolute;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n}\n\nfigure.effect-bubba {\n\tbackground: #000;\n\tmargin-bottom: 1px;\n}\n\nfigure.effect-bubba img {\n\t/* opacity: 0.95; */\n\t-webkit-transition: opacity 0.35s;\n\ttransition: opacity 0.35s;\n}\n\nfigure.effect-bubba:hover img {\n\topacity: 0.4;\n}\n\nfigure.effect-bubba figcaption::before,\nfigure.effect-bubba figcaption::after {\n\tposition: absolute;\n\ttop: 30px;\n\tright: 30px;\n\tbottom: 30px;\n\tleft: 30px;\n\tcontent: '';\n\topacity: 0;\n\t-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;\n\ttransition: opacity 0.35s, transform 0.35s;\n}\n\nfigure.effect-bubba figcaption::before {\n\tborder-top: 1px solid #fff;\n\tborder-bottom: 1px solid #fff;\n\t-webkit-transform: scale(0,1);\n\ttransform: scale(0,1);\n}\n\nfigure.effect-bubba figcaption::after {\n\tborder-right: 1px solid #fff;\n\tborder-left: 1px solid #fff;\n\t-webkit-transform: scale(1,0);\n\ttransform: scale(1,0);\n}\n\nfigure.effect-bubba h2 {\n\topacity: 0;\n\tcolor: #fff;\n\tfont-size: 15px;\n\tfont-weight: 700;\n\ttext-transform: uppercase;\n\tpadding-top: 30%;\n\t-webkit-transition: -webkit-transform 0.35s;\n\ttransition: transform 0.35s;\n\t-webkit-transform: translate3d(0,-20px,0);\n\ttransform: translate3d(0,-20px,0);\n}\n\nfigure.effect-bubba p {\n\tcolor: #fff;\n\tfont-size: 13px;\n\tfont-weight: 500;\n\tpadding: 20px 2.5em;\n\topacity: 0;\n\t-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;\n\ttransition: opacity 0.35s, transform 0.35s;\n\t-webkit-transform: translate3d(0,20px,0);\n\ttransform: translate3d(0,20px,0);\n}\n\nfigure.effect-bubba:hover figcaption::before,\nfigure.effect-bubba:hover figcaption::after {\n\topacity: 1;\n\t-webkit-transform: scale(1);\n\ttransform: scale(1);\n}\n\nfigure.effect-bubba:hover h2,\nfigure.effect-bubba:hover p {\n\topacity: 1;\n\t-webkit-transform: translate3d(0,0,0);\n\ttransform: translate3d(0,0,0);\n}\n\n/*--------------------\n4.4. Dark Short section (counters, quote, etc)\n--------------------*/\n\n.light-bg {\n\tbackground-color: #f8f8f8;\n}\n\n.dark-bg {\n\tbackground-color: #f8f8f8;\n\tcolor: #fff;\n}\n\n.short-section {\n\tborder-top: 1px solid #5D5D5F;\n\tborder-bottom: 1px solid #5D5D5F;\n\tpadding-top: 70px;\n\tpadding-bottom: 70px;\n}\n\n.counter-item h2 {\n\tcolor: #fff;\n\tfont-size: 60px;\n\tfont-weight: 900;\n}\n\n.counter-item h6 {\n\tcolor: #FFF;\n\tfont-size: 16px;\n\tfont-weight: 700;\n\tmargin: 10px 0 0 0;\n\ttext-transform: uppercase;\n}\n\n/*--------------------\n4.5. Partners Slider\n--------------------*/\n\n.owl-portfolio .owl-controls {\n\tposition: absolute;\n\tleft: 0;\n\ttop: 38%;\n\twidth: 100%;\n}\n\n.owl-portfolio .owl-controls .owl-nav [class*=owl-] {\n\tpadding: 8px 17px;\n\tbackground: rgba(0, 0, 0, 0.18);\n\tborder-radius: 0;\n\tmargin: 0;\n\tfont-size: 20px;\n\tz-index:1000;\n}\n\n.owl-portfolio .owl-controls .owl-nav [class*=owl-]:hover {\n\tbackground: #000;\n\tcolor: #fff;\n\ttext-decoration: none;\n}\n\n.owl-portfolio .owl-controls .owl-prev {\n\tfloat: left;\n}\n\n.owl-portfolio .owl-controls .owl-next {\n\tfloat: right;\n}\n\n.owl-portfolio-item {\n\ttext-align: center;\n\tdisplay: inline-block;\n}\n\n.partner-logo {\n\theight: 80px;\n\ttext-align: center;\n\tdisplay: inline-block;\n}\n\n.partner-logo img {\n\theight: 100%;\n\twidth: auto !important;\n}\n\n.owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {\n\tbackground: #23AD21;\n}\n\n.owl-theme .owl-dots .owl-dot span {\n\twidth: 30px;\n\theight: 5px;\n\tmargin: 15px 7px 0 7px;\n\tbackground: #d6d6d6;\n\tdisplay: block;\n\t-webkit-backface-visibility: visible;\n\t-webkit-transition: opacity 200ms ease;\n\t-moz-transition: opacity 200ms ease;\n\t-ms-transition: opacity 200ms ease;\n\t-o-transition: opacity 200ms ease;\n\ttransition: opacity 200ms ease;\n\t-webkit-border-radius: 30px;\n\t-moz-border-radius: 30px;\n\tborder-radius: 0;\n}\n\n.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {\n\tbackground: #23AD21;\n}\n\n/*--------------------\n4.6. Team\n--------------------*/\n\n.team-item {\n\ttext-align: center;\n\tbackground-color: #fff;\n}\n\n.team-item h3 {\n\tfont-size: 16px;\n\tfont-weight: 800;\n\ttext-transform: uppercase;\n\tcolor: #2D2D2D;\n}\n\n.team-item .team-position {\n\tcolor: #656262;\n\tfont-size: 12px;\n\tmargin: 15px 0 10px;\n\ttext-transform: uppercase;\n\tfont-weight: 500;\n\tletter-spacing: 2px;\n}\n\n.team-item p {\n\tfont-size: 13px;\n\tfont-weight: 400;\n\tcolor: #292929;\n\tpadding: 5px 10px 20px 10px;\n}\n\n/*--------------------\n4.7. Contacts\n--------------------*/\n\nsection#contact form {\n\tmargin-top: 15px;\n}\nsection#contact.form-group {\n\tmargin-bottom: 25px;\n}\n\nsection#contact .form-group input, section#contact .form-group textarea {\n\tpadding: 15px;\n\tborder: 1px solid #BBBBBB;\n\tborder-radius: 0;\n\t-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);\n\tbox-shadow: inset 0 0px 0px rgba(0,0,0,.075);\n\tfont-size: 13px;\n}\n\n.contact h3 {\n\tmargin-bottom: 30px;\n}\n\n.contact p {\n\tfont-size: 13px;\n}\n\n.contact .day {\n\tdisplay: inline-block;\n\twidth: 80px;\n}\n\n.contact i {\n\tmargin-right: 5px;\n}\n\n/*--------------------\n5. Footer\n--------------------*/\n\nfooter {\n\tpadding: 30px;\n\tbackground-color: #000;\n}\n\nfooter p {\n\tcolor: #B7B7B7;\n\tmargin: 0;\n\tfont-size: 10px;\n\ttext-transform: uppercase;\n\tfont-weight: 500;\n\tletter-spacing: 1.6px;\n}\n\nfooter p a {\n\tcolor: #fff;\n}\n\nfooter p a span {\n\tcolor: #23AD21;\n\tfont-size: 10px;\n\tletter-spacing: 1px;\n\tfont-weight: 700;\n}\n\n/*--------------------\n6. Modal\n--------------------*/\n\n.modal-content {\n\tborder-radius: 0;\n}\n.modal-header .close {\n\tfont-size: 30px;\n}\n.modal-title {\n\ttext-transform: uppercase;\n\tfont-size: 23px;\n}\n\n.modal-body {\n\tpadding: 0;\n}\n\n.modal-body p {\n\tmargin: 30px 20px;\n\tcolor: #2D2D2D;\n}\n\n.modal-works {\n\tfont-size: 11px;\n\tletter-spacing: 1px;\n\ttext-transform: uppercase;\n\tfont-weight: 500;\n\tcolor: #fff;\n\tmargin: 25px 20px;\n}\n\n.modal-works span {\n\tbackground-color: #FED136;\n\tmargin-right: 15px;\n\tpadding: 5px 10px;\n}\n\n/*--------------------\n7. Components\n--------------------*/\n\n.btn-xl:hover, .btn-xl:focus, .btn-xl:active, .btn-xl.active, .open .dropdown-toggle.btn-xl {\n\tcolor: #fff;\n\tbackground-color: #fec503;\n\tborder-color: #f6bf01;\n}\n\n.btn:hover, .btn:focus, .btn:active, .btn.active, .open .dropdown-toggle.btn {\n\tcolor: #fff;\n\tbackground-color: #21831f;\n\tborder-color: #21831f;\n\ttransition: 0.3s;\n}\n\n.btn {\n\tdisplay: inline-block;\n\tpadding: 8px 20px;\n\tmargin-bottom: 0;\n\tfont-size: 14px;\n\tfont-weight: 400;\n\tline-height: 1.42857143;\n\ttext-align: center;\n\twhite-space: nowrap;\n\tvertical-align: middle;\n\t-ms-touch-action: manipulation;\n\ttouch-action: manipulation;\n\tcursor: pointer;\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\t-ms-user-select: none;\n\tuser-select: none;\n\tbackground-image: none;\n\tborder: 1px solid transparent;\n\tborder-radius: 4px;\n\tbackground-color: #23AD21;\n}\n\n.btn-xl {\n\tcolor: #fff;\n\tbackground-color: #23AD21;\n\t/* border-color: #726FB9; */\n\tfont-family: 'Mitr', sans-serif;\n\ttext-transform: uppercase;\n\tfont-weight: 800;\n\tborder-radius: 0;\n\tletter-spacing: 2px;\n\tfont-size: 16px;\n\tpadding: 17px 45px;\n}\n\n/* Back to top button\n---------------------------------- */\n#back-top {\n\tposition: fixed;\n\tz-index: 1000;\n\tbottom: 40px;\n\tright: 50px;\n}\n#back-top a {\n\twidth: 60px;\n\theight: 60px;\n\tdisplay: block;\n\ttext-align: center;\n\tfont: 11px/100% Arial, Helvetica, sans-serif;\n\ttext-transform: uppercase;\n\ttext-decoration: none;\n\tcolor: #FFFFFF;\n\tbackground: #A9A9B1;\n\t/* background color transition */\n\t-webkit-transition: 1s;\n\t-moz-transition: 1s;\n\ttransition: 1s;\n}\n#back-top a:hover {\n\tbackground: #fed136;\n}\n/* arrow icon (span tag) */\n#back-top i {\n\tmargin-top: 15px;\n\tfont-size: 28px;\n}\n\n/* ----------- RESPONSIVE -------- */\n@media (max-width: 575px){\n\t.set_logo {\n\t\t\twidth: 200px;\n\t}\n\t.cat-img {\n\t\t\theight: 60vmin;\n\t\t\twidth: 100%;\n\t}\n}\n\n@media (max-width: 568px) and (max-height: 320px) {\n\t.cat-img {\n\t\t\theight: 320px;\n\t\t\twidth: 100%;\n\t}\n}\n\n@media (min-width: 576px) {\n\t.cat-img {\n\t\t\theight: 195px;\n\t\t\twidth: 100%;\n\t}\n}\n\n\n@media (min-width: 768px) {\n\t.navbar-default\n\t{\n\t\tbackground-color: rgb(255, 255, 255);\n\t\tpadding: 5px 0;\n\t\t-webkit-transition:padding .3s!important;\n\t\t-moz-transition:padding .3s!important;\n\t\ttransition:padding .3s!important;\n\t\tborder:0\n\t}\n\t.navbar-default .navbar-brand {\n\t\tfont-size: 2em;\n\t\t-webkit-transition:all .3s!important;\n\t\t-moz-transition:all .3s!important;\n\t\ttransition:all .3s!important;\n\t}\n\t.navbar-default .navbar-nav>.active>a {\n\t\tborder-radius: 3px;\n\t}\n\t.navbar-default.navbar-shrink {\n\t\tbackground-color: #FFFFFF;\n\t\tborder-bottom: 1px solid #828282;\n\t\tpadding: 5px 0;\n\t}\n\t.navbar-default.navbar-shrink .navbar-brand {\n\t\tfont-size: 1.5em;\n\t\tmargin-top: 10px;\n\t}\n\theader .intro-text {\n\t\tpadding-top: 230px;\n\t\tpadding-bottom: 400px;\n\t}\n\theader .intro-text .intro-lead-in {\n\t\tfont-size: 29px;\n\t\tline-height: 40px;\n\t\tmargin-bottom: 45px;\n\t}\n\theader .intro-text .intro-heading {\n\t\tline-height: 95px;\n\t\tfont-size: 77px;\n\t\tmargin-bottom: 50px;\n\t}\n\t.cat-img {\n\t\t\theight: 250px;\n\t\t\twidth: 100%;\n\t}\n}\n\n\n@media (min-width: 992px) {\n\t.cat-img {\n\t\t\theight: 220px;\n\t\t\twidth: 100%;\n\t}\n}\n\n@media (min-width: 1200px) {\n\t.cat-img {\n\t\t\theight: 260px;\n\t\t\twidth: 100%;\n\t}\n}\n\n\n@media (min-width: 1600px) {\n\t.cat-img {\n\t\t\theight: 235px;\n\t\t\twidth: 100%;\n\t}\n}\n", ""]);
 
 // exports
 
@@ -3628,165 +3596,283 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", { staticClass: "dark-bg", attrs: { id: "contact" } }, [
+    _c("div", { staticClass: "container" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c(
+            "form",
+            {
+              attrs: { name: "sentMessage", id: "contactForm" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.addPost($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.post.name,
+                          expression: "post.name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Your Name *" },
+                      domProps: { value: _vm.post.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.post, "name", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "help-block text-danger" })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.post.email,
+                          expression: "post.email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "email",
+                        placeholder: "Your Email *",
+                        id: "email",
+                        required: "",
+                        "data-validation-required-message":
+                          "Please enter your email address."
+                      },
+                      domProps: { value: _vm.post.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.post, "email", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "help-block text-danger" })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-12" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.post.contact_type_id,
+                            expression: "post.contact_type_id"
+                          }
+                        ],
+                        staticClass: "form-control rounded-0",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.post,
+                              "contact_type_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("ประเภทการติดต่อ")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.items, function(val) {
+                          return _c(
+                            "option",
+                            { domProps: { value: val.message } },
+                            [_vm._v(_vm._s(val.message))]
+                          )
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "help-block text-danger" })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-12" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.post.detail,
+                          expression: "post.detail"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        placeholder: "Your Message *",
+                        id: "message",
+                        required: "",
+                        "data-validation-required-message":
+                          "Please enter a message."
+                      },
+                      domProps: { value: _vm.post.detail },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.post, "detail", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "help-block text-danger" })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "clearfix" })
+              ]),
+              _vm._v(" "),
+              _vm._m(3)
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "dark-bg", attrs: { id: "contact" } }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-lg-12 text-center" }, [
-            _c("div", { staticClass: "section-title" }, [
-              _c("h2", [_vm._v("ติดต่อเรา")]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "If you have some Questions or need Help! Please Contact Us!"
-                ),
-                _c("br"),
-                _vm._v("We make Cool and Clean Design for your Business")
-              ])
-            ])
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12 text-center" }, [
+        _c("div", { staticClass: "section-title" }, [
+          _c("h2", [_vm._v("ติดต่อเรา")]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "If you have some Questions or need Help! Please Contact Us!"
+            ),
+            _c("br"),
+            _vm._v("We make Cool and Clean Design for your Business")
           ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "section-text" }, [
+        _c("h4", [_vm._v("Our Business Office")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "3422 Street, Barcelona 432, Spain, New Building North, 15th Floor"
+          )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-3" }, [
-            _c("div", { staticClass: "section-text" }, [
-              _c("h4", [_vm._v("Our Business Office")]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "3422 Street, Barcelona 432, Spain, New Building North, 15th Floor"
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("i", { staticClass: "fa fa-phone" }),
-                _vm._v(" +101 377 655 22125")
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("i", { staticClass: "fa fa-envelope" }),
-                _vm._v(" mail@yourcompany.com")
-              ])
-            ])
-          ]),
+        _c("p", [
+          _c("i", { staticClass: "fa fa-phone" }),
+          _vm._v(" +101 377 655 22125")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("i", { staticClass: "fa fa-envelope" }),
+          _vm._v(" mail@yourcompany.com")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "section-text" }, [
+        _c("h4", [_vm._v("Business Hours")]),
+        _vm._v(" "),
+        _c("p", [
+          _c("i", { staticClass: "fa fa-clock-o" }),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-3" }, [
-            _c("div", { staticClass: "section-text" }, [
-              _c("h4", [_vm._v("Business Hours")]),
-              _vm._v(" "),
-              _c("p", [
-                _c("i", { staticClass: "fa fa-clock-o" }),
-                _vm._v(" "),
-                _c("span", { staticClass: "day" }, [_vm._v("Weekdays:")]),
-                _c("span", [_vm._v("9am to 8pm")])
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("i", { staticClass: "fa fa-clock-o" }),
-                _vm._v(" "),
-                _c("span", { staticClass: "day" }, [_vm._v("Saturday:")]),
-                _c("span", [_vm._v("9am to 2pm")])
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("i", { staticClass: "fa fa-clock-o" }),
-                _vm._v(" "),
-                _c("span", { staticClass: "day" }, [_vm._v("Sunday:")]),
-                _c("span", [_vm._v("Closed")])
-              ])
-            ])
-          ]),
+          _c("span", { staticClass: "day" }, [_vm._v("Weekdays:")]),
+          _c("span", [_vm._v("9am to 8pm")])
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("i", { staticClass: "fa fa-clock-o" }),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c(
-              "form",
-              {
-                attrs: {
-                  name: "sentMessage",
-                  id: "contactForm",
-                  novalidate: ""
-                }
-              },
-              [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Your Name *",
-                          id: "name",
-                          required: "",
-                          "data-validation-required-message":
-                            "Please enter your name."
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "help-block text-danger" })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "email",
-                          placeholder: "Your Email *",
-                          id: "email",
-                          required: "",
-                          "data-validation-required-message":
-                            "Please enter your email address."
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "help-block text-danger" })
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-12" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("textarea", {
-                        staticClass: "form-control",
-                        attrs: {
-                          placeholder: "Your Message *",
-                          id: "message",
-                          required: "",
-                          "data-validation-required-message":
-                            "Please enter a message."
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "help-block text-danger" })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "clearfix" })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-lg-12 text-center" }, [
-                    _c("div", { attrs: { id: "success" } }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      { staticClass: "btn", attrs: { type: "submit" } },
-                      [_vm._v("Send Message")]
-                    )
-                  ])
-                ])
-              ]
-            )
-          ])
+          _c("span", { staticClass: "day" }, [_vm._v("Saturday:")]),
+          _c("span", [_vm._v("9am to 2pm")])
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("i", { staticClass: "fa fa-clock-o" }),
+          _vm._v(" "),
+          _c("span", { staticClass: "day" }, [_vm._v("Sunday:")]),
+          _c("span", [_vm._v("Closed")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12 text-center" }, [
+        _c("div", { attrs: { id: "success" } }),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
+          _vm._v("Send Message")
         ])
       ])
     ])
@@ -4148,222 +4234,59 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", { attrs: { id: "portfolio" } }, [
+    _c("div", { staticClass: "container" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row row-0-gutter" },
+        _vm._l(_vm.portfolio_title, function(value) {
+          return _c(
+            "div",
+            { staticClass: "col-md-4 col-0-gutter" },
+            [
+              _c("router-link", { attrs: { to: "/detail" } }, [
+                _c("div", { staticClass: "ot-portfolio-item" }, [
+                  _c("figure", { staticClass: "effect-bubba" }, [
+                    _c("img", {
+                      staticClass: "img-responsive",
+                      attrs: {
+                        src: __webpack_require__("./resources/front/import/images/demo/portfolio-1.jpg"),
+                        alt: "img02"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("figcaption", [
+                      _c("h2", [_vm._v(_vm._s(value.title))]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v(_vm._s(value.detail))])
+                    ])
+                  ])
+                ])
+              ])
+            ],
+            1
+          )
+        })
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { attrs: { id: "portfolio" } }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-lg-12 text-center" }, [
-            _c("div", { staticClass: "section-title" }, [
-              _c("h2", [_vm._v("ผลงานของเรา")]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "Our portfolio is the best way to show our work, you can see here a big range of our work. Check them all and you will find what you are looking for."
-                )
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row row-0-gutter" }, [
-          _c("div", { staticClass: "col-md-4 col-0-gutter" }, [
-            _c("div", { staticClass: "ot-portfolio-item" }, [
-              _c("figure", { staticClass: "effect-bubba" }, [
-                _c("img", {
-                  staticClass: "img-responsive",
-                  attrs: {
-                    src: __webpack_require__("./resources/front/import/images/demo/portfolio-1.jpg"),
-                    alt: "img02"
-                  }
-                }),
-                _vm._v(" "),
-                _c("figcaption", [
-                  _c("h2", [_vm._v("Dean & Letter")]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Branding, Design")]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "#",
-                        "data-toggle": "modal",
-                        "data-target": "#Modal-1"
-                      }
-                    },
-                    [_vm._v("View more")]
-                  )
-                ])
-              ])
-            ])
-          ]),
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12 text-center" }, [
+        _c("div", { staticClass: "section-title" }, [
+          _c("h2", [_vm._v("ผลงานของเรา")]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-4 col-0-gutter" }, [
-            _c("div", { staticClass: "ot-portfolio-item" }, [
-              _c("figure", { staticClass: "effect-bubba" }, [
-                _c("img", {
-                  staticClass: "img-responsive",
-                  attrs: {
-                    src: __webpack_require__("./resources/front/import/images/demo/portfolio-2.jpg"),
-                    alt: "img02"
-                  }
-                }),
-                _vm._v(" "),
-                _c("figcaption", [
-                  _c("h2", [_vm._v("Startup Framework")]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Branding, Web Design")]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "#",
-                        "data-toggle": "modal",
-                        "data-target": "#Modal-2"
-                      }
-                    },
-                    [_vm._v("View more")]
-                  )
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4 col-0-gutter" }, [
-            _c("div", { staticClass: "ot-portfolio-item" }, [
-              _c("figure", { staticClass: "effect-bubba" }, [
-                _c("img", {
-                  staticClass: "img-responsive",
-                  attrs: {
-                    src: __webpack_require__("./resources/front/import/images/demo/portfolio-3.jpg"),
-                    alt: "img02"
-                  }
-                }),
-                _vm._v(" "),
-                _c("figcaption", [
-                  _c("h2", [_vm._v("Lamp & Velvet")]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Branding, Web Design")]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "#",
-                        "data-toggle": "modal",
-                        "data-target": "#Modal-3"
-                      }
-                    },
-                    [_vm._v("View more")]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row row-0-gutter" }, [
-          _c("div", { staticClass: "col-md-4 col-0-gutter" }, [
-            _c("div", { staticClass: "ot-portfolio-item" }, [
-              _c("figure", { staticClass: "effect-bubba" }, [
-                _c("img", {
-                  staticClass: "img-responsive",
-                  attrs: {
-                    src: __webpack_require__("./resources/front/import/images/demo/portfolio-4.jpg"),
-                    alt: "img02"
-                  }
-                }),
-                _vm._v(" "),
-                _c("figcaption", [
-                  _c("h2", [_vm._v("Smart Name")]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Branding, Design")]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "#",
-                        "data-toggle": "modal",
-                        "data-target": "#Modal-4"
-                      }
-                    },
-                    [_vm._v("View more")]
-                  )
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4 col-0-gutter" }, [
-            _c("div", { staticClass: "ot-portfolio-item" }, [
-              _c("figure", { staticClass: "effect-bubba" }, [
-                _c("img", {
-                  staticClass: "img-responsive",
-                  attrs: {
-                    src: __webpack_require__("./resources/front/import/images/demo/portfolio-5.jpg"),
-                    alt: "img02"
-                  }
-                }),
-                _vm._v(" "),
-                _c("figcaption", [
-                  _c("h2", [_vm._v("Fast People")]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Branding, Web Design")]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "#",
-                        "data-toggle": "modal",
-                        "data-target": "#Modal-5"
-                      }
-                    },
-                    [_vm._v("View more")]
-                  )
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4 col-0-gutter" }, [
-            _c("div", { staticClass: "ot-portfolio-item" }, [
-              _c("figure", { staticClass: "effect-bubba" }, [
-                _c("img", {
-                  staticClass: "img-responsive",
-                  attrs: {
-                    src: __webpack_require__("./resources/front/import/images/demo/portfolio-6.jpg"),
-                    alt: "img02"
-                  }
-                }),
-                _vm._v(" "),
-                _c("figcaption", [
-                  _c("h2", [_vm._v("Kites & Stars")]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Branding, Web Design")]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "#",
-                        "data-toggle": "modal",
-                        "data-target": "#Modal-2"
-                      }
-                    },
-                    [_vm._v("View more")]
-                  )
-                ])
-              ])
-            ])
+          _c("p", [
+            _vm._v(
+              "Our portfolio is the best way to show our work, you can see here a big range of our work. Check them all and you will find what you are looking for."
+            )
           ])
         ])
       ])
@@ -4493,49 +4416,13 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c(
-          "div",
-          [
-            _c("h2", { staticClass: "heading" }, [
-              _vm._v("OUR VETERINARY PRACTICE")
-            ]),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.info, function(value) {
-              return _c("div", [
-                _c("p", [_vm._v(_vm._s(value.id))]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(value.name))]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(value.year))]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(value.color))]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(value.pantone_value))]),
-                _vm._v(" "),
-                _c("hr")
-              ])
-            }),
-            _vm._v(" "),
-            _vm._l(_vm.test, function(value) {
-              return _c("div", [
-                _c("p", [_vm._v(_vm._s(value.id))]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(value.name))]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(value.year))]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(value.color))]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(value.pantone_value))]),
-                _vm._v(" "),
-                _c("hr")
-              ])
-            })
-          ],
-          2
-        )
+        _c("div", [
+          _c("h2", { staticClass: "heading" }, [
+            _vm._v(_vm._s(_vm.banner_title.title))
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
       ])
     ])
   ])
@@ -18586,41 +18473,6 @@ module.exports = "/images/author-6.jpg?a2b1b2576ffdaf5a2f410832d11c781b";
 /***/ (function(module, exports) {
 
 module.exports = "/images/portfolio-1.jpg?9097b81739e2ab1c56aa40d0f843534e";
-
-/***/ }),
-
-/***/ "./resources/front/import/images/demo/portfolio-2.jpg":
-/***/ (function(module, exports) {
-
-module.exports = "/images/portfolio-2.jpg?9097b81739e2ab1c56aa40d0f843534e";
-
-/***/ }),
-
-/***/ "./resources/front/import/images/demo/portfolio-3.jpg":
-/***/ (function(module, exports) {
-
-module.exports = "/images/portfolio-3.jpg?9097b81739e2ab1c56aa40d0f843534e";
-
-/***/ }),
-
-/***/ "./resources/front/import/images/demo/portfolio-4.jpg":
-/***/ (function(module, exports) {
-
-module.exports = "/images/portfolio-4.jpg?9097b81739e2ab1c56aa40d0f843534e";
-
-/***/ }),
-
-/***/ "./resources/front/import/images/demo/portfolio-5.jpg":
-/***/ (function(module, exports) {
-
-module.exports = "/images/portfolio-5.jpg?9097b81739e2ab1c56aa40d0f843534e";
-
-/***/ }),
-
-/***/ "./resources/front/import/images/demo/portfolio-6.jpg":
-/***/ (function(module, exports) {
-
-module.exports = "/images/portfolio-6.jpg?9097b81739e2ab1c56aa40d0f843534e";
 
 /***/ }),
 

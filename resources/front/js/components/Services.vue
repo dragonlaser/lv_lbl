@@ -30,7 +30,6 @@
 import axios from 'axios'
 export default {
 	 name:'Services',
-
 	 data () {
 		return {
 						Services_title: null,
@@ -41,6 +40,7 @@ export default {
 				axios
 				.get('http://localhost:8000/api/menu')
 				.then(response => (this.Services_title = response.data)),
+
 				axios
 				.get('http://localhost:8000/api/menu')
 				.then(response => (this.Services_Card = response.data[0].front_sub_menu))
