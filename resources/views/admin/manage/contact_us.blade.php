@@ -3,88 +3,88 @@
 <!-- <script src="{{asset('assets/admin/js/example.js')}}"></script> -->
 <script src="{{asset('assets/admin/js/settings/valudation_th.js')}}"></script>
 <script>
-    $('.save').click(function(e) {
+    $('.save').click(function (e) {
         e.preventDefault();
         console.log($('#FormAdd').serialize());
         $.ajax({
-            url: rurl+'/admin/manages/contact-us/store',
+            url: rurl + '/admin/manages/contact-us/store',
             method: 'POST',
             data: $('#FormAdd').serialize(),
-            success: function() {
+            success: function () {
                 $("#example").DataTable().ajax.reload(null, false);
                 toastr['success']('Example Inserted', 'Success')
                 $('.modal').modal('hide');
                 $('input, select, textarea').val('');
             },
-            error: function() {
+            error: function () {
                 toastr['error']('There was an error', 'Error')
             }
         });
     });
-    $('body').on('click', '.btn-delete', function() {
+    $('body').on('click', '.btn-delete', function () {
         var id = $(this).data('id');
         $.ajax({
-            method:'POST',
-            url: rurl+'/admin/manages/contact-us/'+id,
+            method: 'POST',
+            url: rurl + '/admin/manages/contact-us/' + id,
             success: function (data) {
-            toastr['success']('Example Deleted', 'Success')
-            $("#example").DataTable().ajax.reload(null, false);
+                toastr['success']('Example Deleted', 'Success')
+                $("#example").DataTable().ajax.reload(null, false);
             },
             error: function (data) {
-            toastr['error']('There was an error', data)
+                toastr['error']('There was an error', data)
             }
         });
     });
-      var table = $('#example').DataTable({
+    var table = $('#example').DataTable({
         "responsive": true,
         "serverSide": true,
         "processing": true,
         "ajax": rurl + '/admin/manages/contact-us/lists',
         "columns": [{
-            "data": 'DT_RowIndex',
-            "name": 'DT_RowIndex',
-            orderable: false,
-            searchable: false,
-            className:"text-center"
-          },
+                "data": 'DT_RowIndex',
+                "name": 'DT_RowIndex',
+                orderable: false,
+                searchable: false,
+                className: "text-center"
+            },
 
-          {
-            "data": "title",
-            "name": "title"
-          },
-          {
-            "data": "description",
-            "name": "description"
-          },
-          {
-            "data": "ip",
-            "name": "ip"
-          },
-          {
-            "data": "action",
-            orderable: false,
-            searchable: false,
-            className: 'text-center'
-          }
+            {
+                "data": "title",
+                "name": "title"
+            },
+            {
+                "data": "description",
+                "name": "description"
+            },
+            {
+                "data": "ip",
+                "name": "ip"
+            },
+            {
+                "data": "action",
+                orderable: false,
+                searchable: false,
+                className: 'text-center'
+            }
         ],
-      });
-      $('body').on('click', '.btn-edit', function(){
-          var id = $(this).data('id')
-          $('#id').val(id);
-          $.ajax({
+    });
+    $('body').on('click', '.btn-edit', function () {
+        var id = $(this).data('id')
+        $('#id').val(id);
+        $.ajax({
             type: 'get',
-            url: rurl+'/admin/manages/contact-us/'+id,
+            url: rurl + '/admin/manages/contact-us/' + id,
             dataType: "json",
             success: function (data) {
-                $('#title').val(data.title);                
+                $('#title').val(data.title);
                 $('#description').val(data.description);
                 $('.modal').modal('show');
             },
             error: function (data) {
                 toastr['error']('There was an error', data)
             }
-          });
         });
+    });
 </script>
 @stop @section('content')
 
@@ -129,7 +129,8 @@
 
 
 <!-- Simple Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <form id="FormAdd">
             <div class="modal-content">

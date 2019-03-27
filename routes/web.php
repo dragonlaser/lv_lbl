@@ -348,6 +348,10 @@ Route::group([
     });
     Route::group(['prefix' => 'manages'], function() 
     {
+        # Contact Type
+        Route::resource('contact_type','Admin\ContacttypeController');
+        Route::get('contact_type_list','Admin\ContacttypeController@list');
+
         # Menu
         Route::get('main', 'ManageController@main');
         Route::get('main/lists', 'ManageController@main_lists');
@@ -363,6 +367,7 @@ Route::group([
         # Content
         Route::get('content', 'ManageController@content');
         Route::get('content/lists', 'ManageController@content_lists');
+        Route::get('content/create', 'ManageController@content_create');
         Route::post('content/store', 'ManageController@content_store');
         Route::get('content/{id}', 'ManageController@content_show');
         Route::post('content/{id}', 'ManageController@content_delete');
