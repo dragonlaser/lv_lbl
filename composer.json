@@ -16,7 +16,8 @@
         "laracasts/flash": "^2.0",
         "laravel/socialite": "^2.0",
         "niklasravnsborg/laravel-pdf": "^3.1",
-        "yajra/laravel-datatables-oracle": "^8.0"
+        "yajra/laravel-datatables-oracle": "^8.0",
+        "unisharp/laravel-filemanager": "~1.8"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.4",

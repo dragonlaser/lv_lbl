@@ -167,6 +167,9 @@ return [
 
         Yajra\DataTables\DataTablesServiceProvider::class,
         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
+
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -218,7 +221,8 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
-        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class
+        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

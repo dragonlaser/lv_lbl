@@ -1,10 +1,9 @@
 <?php
-
 namespace Laraspace\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Contacttype extends Model
 {
-    public $table = 'categories';
+    protected $table = 'contact_type';
 }

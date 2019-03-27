@@ -35,6 +35,15 @@ class ManageController extends Controller
         $data['menu'] = 'Content';
         return view('admin.manage.content')->with($data);
     }
+
+    public function content_create()
+    {
+        $data['users'] = \Laraspace\Models\Employee::get();
+        $data['categories'] = \Laraspace\Models\Category::get();
+        $data['menu'] = 'Content Create';
+        return view('admin.manage.content_create')->with($data);
+    }
+
     public function category()
     {
         $data['users'] = \Laraspace\Models\Employee::get();
