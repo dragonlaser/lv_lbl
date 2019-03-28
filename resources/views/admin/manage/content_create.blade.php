@@ -1,12 +1,14 @@
 @extends('admin.layouts.layout-horizontal') @section('scripts')
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
 <!-- summernote config -->
 <script>
 $(document).ready(function(){
 
     // Define function to open filemanager window
     var lfm = function(options, cb) {
-    var route_prefix = (options && options.prefix) ? options.prefix : '/laravel-filemanager';
+    var route_prefix = (options && options.prefix) ? options.prefix : 'laravel-filemanager';
     window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager', 'width=900,height=600');
     window.SetUrl = cb;
     };
@@ -19,7 +21,7 @@ $(document).ready(function(){
         tooltip: 'Insert image with filemanager',
         click: function() {
 
-        lfm({type: 'image', prefix: '/laravel-filemanager'}, function(lfmItems, path) {
+        lfm({type: 'image', prefix: '/admin/laravel-filemanager'}, function(lfmItems, path) {
             lfmItems.forEach(function (lfmItem) {
             context.invoke('insertImage', lfmItem.url);
             });
@@ -32,7 +34,7 @@ $(document).ready(function(){
 
     // Initialize summernote with LFM button in the popover button group
     // Please note that you can add this button to any other button group you'd like
-    $('.ls-summernote').summernote({
+    $('#summernote').summernote({
     toolbar: [
         ['popovers', ['lfm']],
     ],
@@ -82,7 +84,7 @@ $(document).ready(function(){
                         </div>
                         <div class="form-group">
                             <label for="detail">Detail</label>
-                            <textarea name="detail" id="detail" class="ls-summernote"></textarea>
+                            <textarea name="detail" id="summernote" class="summernote"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

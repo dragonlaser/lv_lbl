@@ -26,6 +26,9 @@ Route::group([
 //    'middleware' => 'admin'
 ], function () {
 
+    Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+    Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
+
     //Install CRUD
     Route::resource('install','InstallController');
     Route::get('data_install','InstallController@list');
