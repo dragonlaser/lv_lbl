@@ -37,8 +37,8 @@ Route::group([
     Route::post('createmvc','InstallController@createmvc');
 
     //Example CRUD
-    Route::resource('example','example\ExampleController');
-    Route::get('data_example','example\ExampleController@list');
+    Route::resource('example','ExampleController');
+    Route::get('data_example','ExampleController@list');
 
     // Dashboard
     //----------------------------------

@@ -1,6 +1,6 @@
 <?php
 
-namespace Laraspace\Http\Controllers\example;
+namespace Laraspace\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Laraspace\Http\Controllers\Controller;

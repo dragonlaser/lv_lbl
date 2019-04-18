@@ -141,7 +141,8 @@ var Examples = (function () {
         })
 
         $(document).on('click', '.btn-add', function(){
-          // $('[name="id"]').remove()
+          $('[name="id"]').val(null)
+          console.log($('[name="id"]').val())
           $('.validateForm').trigger('reset')
           $('.validateForm').addClass('formadd')
           $('.validateForm').removeAttr('data-id')
@@ -157,6 +158,7 @@ var Examples = (function () {
         $(document).on('click', '.btn-edit', function(){
           var id = $(this).data('id')
           $('[name="id"]').val(id);
+          console.log($('[name="id"]').val())
           var selector = $('.validateForm')
           selector.addClass('formedit')
           selector.find('[type="submit"]').removeAttr('data-id');
