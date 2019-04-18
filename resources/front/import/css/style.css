@@ -75,7 +75,9 @@ p {
 	margin-top: -8px;
 }
 
-
+.rounded-0 {
+	border-radius: 0px!important;
+}
 a:hover, a:focus, a:active, a.active {
 	color: #fec503;
 }

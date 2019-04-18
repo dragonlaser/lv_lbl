@@ -11,97 +11,37 @@
 			</div>
 			<div class="row row-0-gutter">
 				<!-- start portfolio item -->
-				<div class="col-md-4 col-0-gutter">
-					<div class="ot-portfolio-item">
-						<figure class="effect-bubba">
-							<img src="../../import/images/demo/portfolio-1.jpg" alt="img02" class="img-responsive" />
-							<figcaption>
-								<h2>Dean & Letter</h2>
-								<p>Branding, Design</p>
-								<a href="#" data-toggle="modal" data-target="#Modal-1">View more</a>
-							</figcaption>
-						</figure>
-					</div>
+				<div class="col-md-4 col-0-gutter" v-for="value in portfolio_title">
+					<router-link to="/detail">
+						<div class="ot-portfolio-item">
+							<figure class="effect-bubba">
+								<img src="../../import/images/demo/portfolio-1.jpg" alt="img02" class="img-responsive" />
+								<figcaption>
+									<h2>{{value.title}}</h2>
+									<p>{{value.detail}}</p>
+								</figcaption>
+							</figure>
+						</div>
+					</router-link>
 				</div>
-				<!-- end portfolio item -->
-				<!-- start portfolio item -->
-				<div class="col-md-4 col-0-gutter">
-					<div class="ot-portfolio-item">
-						<figure class="effect-bubba">
-							<img src="../../import/images/demo/portfolio-2.jpg" alt="img02" class="img-responsive" />
-							<figcaption>
-								<h2>Startup Framework</h2>
-								<p>Branding, Web Design</p>
-								<a href="#" data-toggle="modal" data-target="#Modal-2">View more</a>
-							</figcaption>
-						</figure>
-					</div>
-				</div>
-				<!-- end portfolio item -->
-				<!-- start portfolio item -->
-				<div class="col-md-4 col-0-gutter">
-					<div class="ot-portfolio-item">
-						<figure class="effect-bubba">
-							<img src="../../import/images/demo/portfolio-3.jpg" alt="img02" class="img-responsive" />
-							<figcaption>
-								<h2>Lamp & Velvet</h2>
-								<p>Branding, Web Design</p>
-								<a href="#" data-toggle="modal" data-target="#Modal-3">View more</a>
-							</figcaption>
-						</figure>
-					</div>
-				</div>
-				<!-- end portfolio item -->
 			</div>
-			<div class="row row-0-gutter">
-				<!-- start portfolio item -->
-				<div class="col-md-4 col-0-gutter">
-					<div class="ot-portfolio-item">
-						<figure class="effect-bubba">
-							<img src="../../import/images/demo/portfolio-4.jpg" alt="img02" class="img-responsive" />
-							<figcaption>
-								<h2>Smart Name</h2>
-								<p>Branding, Design</p>
-								<a href="#" data-toggle="modal" data-target="#Modal-4">View more</a>
-							</figcaption>
-						</figure>
-					</div>
-				</div>
 				<!-- end portfolio item -->
-				<!-- start portfolio item -->
-				<div class="col-md-4 col-0-gutter">
-					<div class="ot-portfolio-item">
-						<figure class="effect-bubba">
-							<img src="../../import/images/demo/portfolio-5.jpg" alt="img02" class="img-responsive" />
-							<figcaption>
-								<h2>Fast People</h2>
-								<p>Branding, Web Design</p>
-								<a href="#" data-toggle="modal" data-target="#Modal-5">View more</a>
-							</figcaption>
-						</figure>
-					</div>
-				</div>
-				<!-- end portfolio item -->
-				<!-- start portfolio item -->
-				<div class="col-md-4 col-0-gutter">
-					<div class="ot-portfolio-item">
-						<figure class="effect-bubba">
-							<img src="../../import/images/demo/portfolio-6.jpg" alt="img02" class="img-responsive" />
-							<figcaption>
-								<h2>Kites & Stars</h2>
-								<p>Branding, Web Design</p>
-								<a href="#" data-toggle="modal" data-target="#Modal-2">View more</a>
-							</figcaption>
-						</figure>
-					</div>
-				</div>
-				<!-- end portfolio item -->
-			</div>
 		</div><!-- end container -->
 	</section>
 </template>
 <script>
+import axios from 'axios'
 export default {
-    name:'Our-project'
+	name:'Our-project',
+	data () {
+	return {
+			portfolio_title: null,
+		}
+	},
+	mounted () {
+			axios
+			.get('http://localhost:8000/api/menu')
+			.then(response => (this.portfolio_title = response.data[0].front_sub_menu))
+	} 
 }
 </script>
